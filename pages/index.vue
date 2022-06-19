@@ -111,7 +111,7 @@ export default {
         s2: {
           id: 1,
           name: 'Indici',
-          image: 'https://cdn-icons-png.flaticon.com/512/2172/2172225.png',
+          image: 'https://drive.google.com/uc?export=view&id=1b3E3EdpitR4fZP47a__2QsZBtRLnQ2ax',
           col: 5,
           path: 'indici',
         },
@@ -119,7 +119,7 @@ export default {
           id: 2,
           name: 'Contatti',
           image:
-            'https://assets.materialup.com/uploads/b6c33467-82c3-442c-a2dc-c089bbff9fa1/preview.png',
+            'https://st4.depositphotos.com/1842549/21133/i/450/depositphotos_211331124-stock-photo-user-profile-icon-user-profile.jpg',
           col: 5,
           path: 'contatti',
         },
@@ -127,7 +127,7 @@ export default {
           id: 3,
           name: 'Progetto',
           image:
-            'https://www.un.org/geospatialnetwork/sites/www.un.org.geospatialnetwork/files/geosptial_network.jpg',
+            'https://www.efgs.info/wp-content/uploads/news/2016/GGIM_logo.png',
           col: 7,
           path: 'progetto',
         },

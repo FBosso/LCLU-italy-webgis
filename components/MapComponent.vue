@@ -67,7 +67,10 @@
     margin-top: 10px;
 }
 .map{
-    height: 500px;
+    height: 400px;
     margin-top: 10px;
 }
+/* .ol-attribution{
+    color: red;
+} */
 </style>

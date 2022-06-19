@@ -31,9 +31,7 @@ certain order and do not act directly on the layout for future modifications*/
               <span class="subtitle-footer">Coordinates:</span> 45°41′N ,9°40′E
               <br>
               <span class="subtitle-footer">Neighboring municipalities:</span>
-              Azzano San Paolo, Curno, Gorle, Lallio, Mozzo, Orio al Serio,
-              Paladina, Ponteranica, Seriate, Sorisole, Stezzano, Torre Boldone,
-              Treviolo, Valbrembo
+              Azzano San Paolo,
             </div>
           </div>
           <!-- Column 2 - It contains the vision that we want to accomplish with our website -->
@@ -42,24 +40,18 @@ certain order and do not act directly on the layout for future modifications*/
             <p class="paragraph">
               The vision of Locus is to provide an immersive and wonderful
               experience in visiting one of the most beautiful city of northern
-              Italy: Bergamo. The history of Bergamo is full of art, nature and
-              adventures and our vision is to spread it all over the word making
-              it accesible with our intercative website!
+              Italy: Bergamo. The history of Bergamo is full of art
             </p>
           </div>
           <!-- Column 3 - It contains the links to all the sections of the website -->
           <div class="col-xl space">
-            <NuxtLink class="section" to="/all-itineraries">Itineraries</NuxtLink>
+            <NuxtLink class="section" to="/risorse">Risorse</NuxtLink>
             <hr />
-            <NuxtLink class="section" to="/all-places">Places</NuxtLink>
+            <NuxtLink class="section" to="/indici">Indici</NuxtLink>
             <hr />
-            <NuxtLink class="section" to="/all-events">Events</NuxtLink>
+            <NuxtLink class="section" to="/progetto">Progetto</NuxtLink>
             <hr />
-            <NuxtLink class="section" to="/all-services">Services</NuxtLink>
-            <hr />
-            <NuxtLink class="section" to="/about-the-town">About the town</NuxtLink>
-            <hr />
-            <NuxtLink class="section" to="/contact-us">Contact-Us</NuxtLink>
+            <NuxtLink class="section" to="/contatti">Contatti</NuxtLink>
           </div>
           <!-- Column 4 - It contains the icons of all social media pages of our site -->
           <div class="col-xl space">
@@ -123,7 +115,8 @@ export default {
 .section {
   text-decoration: none;
   color: rgb(255, 255, 255);
-  font-size: 1em;
+  font-size: 1.2em;
+  font-weight: 100;
   transition: 0.2s ease;
   padding: 5px;
   border-radius: 10px;
@@ -180,8 +173,5 @@ export default {
 }
 .space {
   padding: 40px;
-}
-hr {
-  margin: 15px;
 }
 </style>
