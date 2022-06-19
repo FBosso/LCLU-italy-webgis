@@ -174,7 +174,7 @@ export default {
 
 .header-index {
   font-weight: 900;
-  font-size: 6.5vw;
+  font-size: 5.5vw;
 }
 .center-div {
   display: flex;

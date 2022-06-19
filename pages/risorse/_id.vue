@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <MapComponent />
+        <MapComponent :url="url" />
       </div>
       <div class="col">
         <TitleDescription
@@ -31,7 +31,7 @@ export default {
       risorsa: {
         name: 'Nome Risorsa',
         description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem voluptatibus explicabo doloribus? Necessitatibus totam quia ad eveniet distinctio sunt est nostrum quasi, blanditiis voluptates nesciunt illo ab fugiat non molestiae?',
+          'Carta degli habitat della Regione Toscana, codificati secondo il sistema di classificazione europeo CORINE Biotopes (C.E.C. 1991), con adattamenti ed integrazioni- Dati di valutazione ecologico-ambientale: Indici di valore ecologico, sensibilità ecologica, pressione antropica e fragilità ambientale attribuiti a ciascun biotopo cartografato, con relativa restituzione cartografica per classi di valore. Pubblicazioni di riferimento concettuale e metodologico: - “ISPRA 2009, Il progetto Carta della Natura alla scala 1:50.000. ISPRA ed., Serie Manuali e Linee Guida n.48/2009. Roma”;- ISPRA 2009, Gli habitat in Carta della Natura. Schede descrittive degli habitat per la cartografia alla scala 1:50.000.- ISPRA ed., Serie Manuali e Linee Guida n.49/2009. Roma http://www.isprambiente.gov.it/files/carta-della-natura/catalogo-habitat.pdf;- Nuova legenda per Carta della Natura: http://www.isprambiente.gov.it/it/servizi-per-lambiente/sistema-carta-della-natura/nuova-legenda-nazionale-per-la-cartografia-degli-habitat',
       },
       strumenti_disponibili: {
         direct_download: {
@@ -60,6 +60,7 @@ export default {
           link: '',
         },
       },
+      url: "http://elastic:gVI9PgkBucwq*Yrats4I@localhost:9200/sampling_points/_mvt/geometry/{z}/{x}/{y}"
     }
   },
 }
