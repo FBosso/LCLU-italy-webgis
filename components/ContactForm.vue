@@ -11,27 +11,27 @@ of the possible way in wich the user can reach us). No parameters are needed to 
       user: locusgroup
       psw: locusGroup+2022 
       NOTE: On paid plan the redirect can be costumized a different page-->
-      <form action="https://formspree.io/f/xrgjdgjn" method="POST">
+      <form action="https://formspree.io/f/xlezkdnn" method="POST">
         <div class="row">
           <div class="col-md-4 mb-3">
-            <label for="name">First name</label>
+            <label for="name">Nome</label>
             <input
               id="name"
               name="name"
               type="text"
               class="form-control"
-              placeholder="First name"
+              placeholder="Nome"
               required
             />
           </div>
           <div class="col-md-4 mb-3">
-            <label for="surname">Last name</label>
+            <label for="surname">Cognome</label>
             <input
               id="surname"
               name="surname"
               type="text"
               class="form-control"
-              placeholder="Last name"
+              placeholder="Cognome"
               required
             />
           </div>
@@ -60,42 +60,42 @@ of the possible way in wich the user can reach us). No parameters are needed to 
         </div>
         <div class="row">
           <div class="col-md-4 mb-3">
-            <label for="city">City</label>
+            <label for="city">Città</label>
             <input
               id="city"
               name="city"
               type="text"
               class="form-control"
-              placeholder="City"
+              placeholder="Città"
               required
             />
           </div>
           <div class="col-md-4 mb-3">
-            <label for="state">State</label>
+            <label for="state">Stato</label>
             <input
               id="state"
               name="state"
               type="text"
               class="form-control"
-              placeholder="State"
+              placeholder="Stato"
               required
             />
           </div>
           <div class="col-md-4 mb-3">
-            <label for="CAP">Postal code</label>
+            <label for="CAP">Codice postale</label>
             <input
               id="CAP"
               name="CAP"
               type="number"
               class="form-control"
-              placeholder="Postal code"
+              placeholder="Codice postale"
               required
             />
           </div>
         </div>
         <textarea
           name="message"
-          placeholder="Message"
+          placeholder="Messaggio"
           class="form-control"
           rows="13"
         ></textarea>
@@ -110,12 +110,12 @@ of the possible way in wich the user can reach us). No parameters are needed to 
               required
             />
             <label for="invalidCheck" class="form-check-label">
-              Agree to terms and conditions
+              Accetto termini e condizioni
             </label>
           </div>
         </div>
         <br />
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit">Invia</button>
       </form>
     </div>
 </template>
