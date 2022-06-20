@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <MapComponent :url="url" />
+        <MapComponent :url="url" :url2="url2" />
       </div>
       <div class="col">
         <TitleDescription
@@ -60,7 +60,9 @@ export default {
           link: '',
         },
       },
-      url: "http://elastic:gVI9PgkBucwq*Yrats4I@localhost:9200/sampling_points/_mvt/geometry/{z}/{x}/{y}"
+      /* url: "https://elastic:UuraDFRJ6iedIEhgqNcaEdbb@geoinformatics-project-07e882.es.us-central1.gcp.cloud.es.io/sampling_points/_mvt/geometry/{z}/{x}/{y}", */
+      url: "http://elastic:gVI9PgkBucwq*Yrats4I@localhost:9200/sampling_points/_mvt/geometry/{z}/{x}/{y}",
+      url2: "https://geoservizi.regione.liguria.it/geoserver/wms"
     }
   },
 }

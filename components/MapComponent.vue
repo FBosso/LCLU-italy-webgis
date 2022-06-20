@@ -14,15 +14,27 @@
             style="border-radius: 10px"
           ></vl-view>
 
-          <vl-layer-tile>
-            <vl-source-osm></vl-source-osm>
-          </vl-layer-tile>
 
-          <vl-layer-vector-tile>
+        <vl-layer-vector-tile >
             <vl-source-vector-tile :url="url"></vl-source-vector-tile>
           </vl-layer-vector-tile>
 
-          
+          <vl-layer-tile :opacity="opacity">
+            <vl-source-osm></vl-source-osm>
+          </vl-layer-tile>
+
+          <!-- <vl-layer-vector>
+            <vl-source-vector :url="url2"></vl-source-vector>
+          </vl-layer-vector> -->
+
+          <!-- <vl-layer-tile >
+              <vl-source-wms :url="url2" layers="M1400:L3614"></vl-source-wms>
+          </vl-layer-tile> -->
+
+          <vl-layer-vector-tile >
+            <vl-source-vector-tile :url="url"></vl-source-vector-tile>
+          </vl-layer-vector-tile>
+
         </vl-map>
       </div>
 
@@ -36,6 +48,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'MapComponent',
   head() {
@@ -46,18 +60,23 @@ export default {
   data() {
     return {
       useUrlFunction: true,
-      zoom: 3,
-      center: [1, 0],
+      zoom: 8,
+      center: [983593.1674368433, 5499409.952833894],
       rotation: 0,
       geolocPosition: undefined,
       reloading: false,
+      opacity: 0.7
     }
   },
-  props:{
-      url: {
-        type: String,
-        required: false,
-      }
+  props: {
+    url: {
+      type: String,
+      required: false,
+    },
+    url2: {
+      type: String,
+      required: false,
+    },
   },
   methods: {
     changeMap() {
@@ -83,6 +102,11 @@ export default {
     },
     loadingStrategyFactory() {
       return this.$loadingBBox()
+    },
+    createMvtFormat () {
+      return new MVT({
+        featureClass: Feature,
+      })
     },
   },
 }
