@@ -1,13 +1,20 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
 
-  ssr: "true",
-  target: "static",
+  ssr: true,
+  target: "server",
+
+  serverMiddleware: [
+    {
+      path: "/api",
+      handler: "~/server/api.js"
+    }
+  ],
 
   head: {
     title: 'geo-nuxt',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'it'
     },
     meta: [
       { charset: 'utf-8' },
@@ -51,7 +58,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://localhost:3000',
+    //baseURL: 'https://lcluitalia.herokuapp.com'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
