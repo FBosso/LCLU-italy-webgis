@@ -49,7 +49,6 @@
 
 <script>
 
-
 export default {
   name: 'MapComponent',
   head() {
@@ -57,6 +56,7 @@ export default {
       title: 'Vuelayers with nuxt',
     }
   },
+  
   data() {
     return {
       useUrlFunction: true,
