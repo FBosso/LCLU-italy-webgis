@@ -10,7 +10,17 @@ const { Client } = require('@elastic/elasticsearch');
 /* DEV */
 /* const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
-}) */
+}) 
+
+const client = new Client({
+    node: 'https://geoinformatics-project-07e882.es.us-central1.gcp.cloud.es.io',
+    auth: {
+        username: 'elastic',
+        password: 'UuraDFRJ6iedIEhgqNcaEdbb'
+    }
+});
+
+*/
 
 /* PROD */
 const pg = require('pg')
@@ -19,6 +29,15 @@ const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
    dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
  })
+
+
+const client = new Client({
+    node: 'https://geoinformatics-project-07e882.es.us-central1.gcp.cloud.es.io',
+    auth: {
+        username: process.env.ELASTIC_USER,
+        password: process.env.ELASTIC_PASSWORD
+    }
+});
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
@@ -61,13 +80,7 @@ async function initializeDatabaseConnection() {
 
 }
 
-const client = new Client({
-    node: 'https://geoinformatics-project-07e882.es.us-central1.gcp.cloud.es.io',
-    auth: {
-        username: 'elastic',
-        password: 'UuraDFRJ6iedIEhgqNcaEdbb'
-    }
-});
+
 
 
 
