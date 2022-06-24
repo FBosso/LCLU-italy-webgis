@@ -19,19 +19,16 @@
           <vl-source-osm></vl-source-osm>
         </vl-layer-tile>
 
-        
-
         <!--  WMS RESOURCES -->
-        <vl-layer-tile>
-          <vl-source-wms :url="url2" layers="M1400:L3614"></vl-source-wms>
+        <vl-layer-tile v-if="elastic === ''">
+          <vl-source-wms :url="wms" :layers="wmsLayers"></vl-source-wms>
         </vl-layer-tile>
-
 
         <!-- DEVELOPMENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
-        <vl-layer-vector-tile style:  >
+        <vl-layer-vector-tile v-if="elastic != ''">
           <vl-source-vector-tile
-            url="http://localhost:3000/api/tiles/f436_p_pup/{z}/{x}/{y}"
+            :url="`http://localhost:3000/api/tiles/${elastic}/{z}/{x}/{y}`"
           >
           </vl-source-vector-tile>
         </vl-layer-vector-tile>
@@ -43,8 +40,6 @@
             url="https://lcluitalia.herokuapp.com/api/tiles/ita/{z}/{x}/{y}"
           ></vl-source-vector-tile>
         </vl-layer-vector-tile> -->
-
-
       </vl-map>
     </div>
 
@@ -69,8 +64,8 @@ export default {
   data() {
     return {
       useUrlFunction: true,
-      zoom: 5,
-      center: [1270912, 5282692],
+      zoom: 7,
+      center: [this.xc, this.yc],
       rotation: 0,
       geolocPosition: undefined,
       reloading: false,
@@ -79,23 +74,28 @@ export default {
   },
 
   props: {
-    url: {
+    wms: {
       type: String,
       required: false,
     },
-    url2: {
+    wmsLayers: {
+      type: String,
+      required: false,
+    },
+    elastic: {
+      type: String,
+      required: false,
+    },
+    xc: {
+      type: String,
+      required: false,
+    },
+    yc: {
       type: String,
       required: false,
     },
   },
   methods: {
-    changeMap() {
-      this.useUrlFunction = !this.useUrlFunction
-      this.reloading = true
-      this.$nextTick(() => {
-        this.reloading = false
-      })
-    },
     urlFunction(extent, resolution, projection) {
       return (
         'https://ahocevar.com/geoserver/wfs?service=WFS&' +
@@ -129,7 +129,7 @@ export default {
   margin-top: 10px;
 }
 .map {
-  height: 400px;
+  height: 455px;
   margin-top: 10px;
 }
 /* .ol-attribution{

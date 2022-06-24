@@ -1,14 +1,16 @@
-const { Client } = require('@elastic/elasticsearch');
 const express = require('express')
+const app = express()
 const { Sequelize, DataTypes } = require('sequelize')
 const initialize = require('./initialize').default
-const app = express()
-
 app.use(express.json())
+
+const { Client } = require('@elastic/elasticsearch');
 
 
 /* DEV */
-const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt')
+const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
+    logging: false //Set to true to log DB actions
+})
 
 /* PROD */
 /* const pg = require('pg')
@@ -17,9 +19,6 @@ const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
    dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
  }) */
-
-
-
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
@@ -33,9 +32,33 @@ app.use(cors({
     origin: ["http://localhost:3000"]
 })) */
 
+
+
 // Function that will initialize the connection to the database
 async function initializeDatabaseConnection() {
     await database.authenticate()
+    const Risorse = database.define("risorse", {
+        nome: DataTypes.STRING,
+        regione: DataTypes.STRING,
+        licenza: DataTypes.STRING,
+        descrizione: DataTypes.STRING(1234),
+        wfs: DataTypes.STRING,
+        wms: DataTypes.STRING,
+        wmsLayers: DataTypes.STRING,
+        arcgis: DataTypes.STRING,
+        directDownload: DataTypes.STRING,
+        metadataSite: DataTypes.STRING,
+        metadataXml: DataTypes.STRING,
+        elastic: DataTypes.STRING,
+        nomeRisorsa: DataTypes.STRING,
+        xc: DataTypes.STRING,
+        yc: DataTypes.STRING,
+    })
+    await database.sync({ force: true })
+    return {
+        Risorse
+    }
+
 }
 
 const client = new Client({
@@ -50,7 +73,7 @@ const client = new Client({
 
 async function runMainApi() {
     const models = await initializeDatabaseConnection()
-
+    await initialize(models)
     app.get('/tiles/:resource/:z/:x/:y', function (req, res) {
 
         client.searchMvt({
@@ -80,7 +103,26 @@ async function runMainApi() {
         });
     });
 
+
+    app.get("/risorse", async (req, res) => {
+        const result = await models.Risorse.findAll({
+            attributes:['id', 'nome', 'regione', 'licenza']
+        })
+        return res.json(result)
+    })
+
+
+    app.get("/risorsa/:id", async (req, res) => {
+        const id = +req.params.id
+        const result = await models.Risorse.findOne({
+            where: { id },
+            attributes: {exclude: ['createdAt', 'updatedAt']}
+        })
+        return res.json(result)
+    })
+
 }
+    
 /* app.listen(3001, () =>{
     console.log("server running on port 3001")
 }) */

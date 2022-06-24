@@ -11,9 +11,9 @@ a short description. The required parameters are:
 <template>
   <div>
     <h1 class="header">{{ name }}</h1>
-    <p class="snippet">
+    <!-- <p class="snippet">
       {{ description }}
-    </p>
+    </p> -->
   </div>
 </template>
 

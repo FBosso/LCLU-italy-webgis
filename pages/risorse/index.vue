@@ -1,5 +1,7 @@
 <template>
   <div class="container mt-5">
+    {{ pippo }}
+
     <div class="row">
       <TopPageGeneric
         :name="topData.name"
@@ -13,7 +15,7 @@
         <ResourceCard
           v-for="res in resources"
           :key="res.id"
-          :name="res.name"
+          :name="res.nome"
           class="mb-3"
         />
       </div>
@@ -24,6 +26,10 @@
 <script>
 export default {
   name: 'RisorsePage',
+  async asyncdata({ $axios }) {
+    const { data } = await $axios.get('/api/risorse')
+    return {pippo: data};
+  },
   data() {
     return {
       topData: {
