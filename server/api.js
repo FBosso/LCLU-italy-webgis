@@ -8,17 +8,17 @@ const { Client } = require('@elastic/elasticsearch');
 
 
 /* DEV */
-const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
+/* const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
-})
+}) */
 
 /* PROD */
-/* const pg = require('pg')
+const pg = require('pg')
 pg.defaults.ssl = true
 const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
    dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
- }) */
+ })
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
