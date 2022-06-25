@@ -11,13 +11,22 @@
       <div class="col-xl-3 mb-5">
         <SideFilters />
       </div>
-      <div class="col">
-        <!-- <ResourceCard
-          v-for="res in risorse"
+      <div class="col" v-if="defaul != true">
+        <ResourceCardMod
+          v-for="res in refresh"
           :key="res.id"
-          :name="res.nome"
-          class="mb-3"
-        /> -->
+          :nome="res.nome"
+          :wms="res.wms"
+          :wfs="res.wfs"
+          :arcgis="res.arcgis"
+          :directDownload="res.directDownload"
+          :metadataSite="res.metadataSite"
+          :metadataXml="res.metadataXml"
+          :descrizione="res.descrizione"
+          :id="res.id"
+        />
+      </div>
+      <div class="col" v-if="defaul == true">
         <ResourceCardMod
           v-for="res in risorse"
           :key="res.id"
@@ -41,6 +50,7 @@ export default {
   name: 'RisorsePage',
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/risorse')
+    console.log(data)
     return {
       risorse: data,
     }
@@ -53,21 +63,24 @@ export default {
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, soluta deserunt dolor asperiores amet aut doloremque illum similique, rem voluptates temporibus animi excepturi. Fugit alias quae inventore asperiores? Voluptas, laudantium.',
         tags: ['DatiGeospaziali', 'Regioni', 'LandCover', 'LandUse'],
       },
-      resources: {
-        res1: {
-          id: 0,
-          name: 'Risorsa 1',
-        },
-        res2: {
-          id: 1,
-          name: 'Risorsa 2',
-        },
-        res3: {
-          id: 2,
-          name: 'Risorsa 3',
-        },
-      },
+      defaul: true,
     }
+  },
+  created() {
+    this.$nuxt.$on('change-resources', ($event) => this.updateResources($event))
+  },
+  methods: {
+    updateResources: async function (selected) {
+      console.log('ciao')
+      console.log(selected)
+      const data  = await this.$axios.$get(
+        `/api/datiFiltrati/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${selected.metadataSite}/${selected.metadataXml}`
+      )
+      console.log(data)
+      this.defaul = true
+      this.defaul = false
+      this.refresh = data
+    },
   },
 }
 </script>

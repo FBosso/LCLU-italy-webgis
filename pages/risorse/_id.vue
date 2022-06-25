@@ -77,7 +77,7 @@ export default {
   },
   async asyncData({ route, $axios }) {
     const { id } = route.params
-    const { data } = await $axios.get('/api/risorsa/' + id)
+    const { data } = await $axios.get(`/api/risorsa/${id}`)
     return {
       nome: data.nome,
       descrizione: data.descrizione,
