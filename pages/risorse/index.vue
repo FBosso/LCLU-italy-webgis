@@ -1,7 +1,5 @@
 <template>
   <div class="container mt-5">
-    {{ pippo }}
-
     <div class="row">
       <TopPageGeneric
         :name="topData.name"
@@ -10,13 +8,28 @@
       />
     </div>
     <div class="row mt-4">
-      <SideFilters class="col-md-3" />
+      <div class="col-xl-3 mb-5">
+        <SideFilters />
+      </div>
       <div class="col">
-        <ResourceCard
-          v-for="res in resources"
+        <!-- <ResourceCard
+          v-for="res in risorse"
           :key="res.id"
           :name="res.nome"
           class="mb-3"
+        /> -->
+        <ResourceCardMod
+          v-for="res in risorse"
+          :key="res.id"
+          :nome="res.nome"
+          :wms="res.wms"
+          :wfs="res.wfs"
+          :arcgis="res.arcgis"
+          :directDownload="res.directDownload"
+          :metadataSite="res.metadataSite"
+          :metadataXml="res.metadataXml"
+          :descrizione="res.descrizione"
+          :id="res.id"
         />
       </div>
     </div>
@@ -26,9 +39,11 @@
 <script>
 export default {
   name: 'RisorsePage',
-  async asyncdata({ $axios }) {
+  async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/risorse')
-    return {pippo: data};
+    return {
+      risorse: data,
+    }
   },
   data() {
     return {

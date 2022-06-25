@@ -14,7 +14,9 @@ export default async (models) => {
             metadataXml: "",
             elastic: "aree_forestali",
             xc: "1203352",
-            yc: "5546462"
+            yc: "5546462",
+            formato: "Vettoriale",
+            inspireTheme: "LAND COVER"
         },
         {
             nome: "Aree protette",
@@ -31,6 +33,8 @@ export default async (models) => {
             elastic: "",
             xc: "991070",
             yc: "5512748",
+            formato: "Vettoriale",
+            inspireTheme: "LAND COVER"
         },
     ]
     await models.Risorse.bulkCreate(listaRisorse)

@@ -26,20 +26,21 @@
 
         <!-- DEVELOPMENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
-        <!-- <vl-layer-vector-tile v-if="elastic != ''">
+        <vl-layer-vector-tile v-if="elastic != ''">
           <vl-source-vector-tile
             :url="`http://localhost:3000/api/tiles/${elastic}/{z}/{x}/{y}`"
           >
           </vl-source-vector-tile>
-        </vl-layer-vector-tile> -->
+        </vl-layer-vector-tile>
 
         <!-- PRIDUCTION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
-        <vl-layer-vector-tile>
+        <!-- <vl-layer-vector-tile>
           <vl-source-vector-tile
             :url="`https://lcluitalia.herokuapp.com/api/tiles/${elastic}/{z}/{x}/{y}`"
           ></vl-source-vector-tile>
-        </vl-layer-vector-tile>
+        </vl-layer-vector-tile> -->
+
       </vl-map>
     </div>
 
@@ -132,7 +133,7 @@ export default {
   height: 455px;
   margin-top: 10px;
 }
-/* .ol-attribution{
-    color: red;
-} */
+.ol-unselectable{
+  border-radius: 10px;
+}
 </style>

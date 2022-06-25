@@ -117,3 +117,6 @@ a:link {
 /* FINE CSS condiviso tra all-event.vue.vue & all-poi.vue +++++++++ */
 
 
+.ol-unselectable{
+  border-radius: 10px;
+}

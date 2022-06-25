@@ -1,3 +1,5 @@
+import { DATE } from 'sequelize'
+
 const express = require('express')
 const app = express()
 const { Sequelize, DataTypes } = require('sequelize')
@@ -8,7 +10,7 @@ const { Client } = require('@elastic/elasticsearch');
 
 
 /* DEV */
-/* const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
+const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
 }) 
 
@@ -20,10 +22,8 @@ const client = new Client({
     }
 });
 
-*/
-
 /* PROD */
-const pg = require('pg')
+/* const pg = require('pg')
 pg.defaults.ssl = true
 const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
@@ -37,7 +37,7 @@ const client = new Client({
         username: process.env.ELASTIC_USER,
         password: process.env.ELASTIC_PASSWORD
     }
-});
+}); */
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
@@ -72,6 +72,8 @@ async function initializeDatabaseConnection() {
         nomeRisorsa: DataTypes.STRING,
         xc: DataTypes.STRING,
         yc: DataTypes.STRING,
+        formato: DataTypes.STRING,
+        inspireTheme: DataTypes.STRING
     })
     await database.sync({ force: true })
     return {
@@ -119,11 +121,10 @@ async function runMainApi() {
 
     app.get("/risorse", async (req, res) => {
         const result = await models.Risorse.findAll({
-            attributes:['id', 'nome', 'regione', 'licenza']
+            attributes:['id', 'nome', 'regione', 'licenza','wms','wfs','arcgis','directDownload','metadataSite','metadataXml','descrizione']
         })
         return res.json(result)
     })
-
 
     app.get("/risorsa/:id", async (req, res) => {
         const id = +req.params.id
