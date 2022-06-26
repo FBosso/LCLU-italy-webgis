@@ -60,7 +60,7 @@ export default {
       topData: {
         name: 'Risorse',
         description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, soluta deserunt dolor asperiores amet aut doloremque illum similique, rem voluptates temporibus animi excepturi. Fugit alias quae inventore asperiores? Voluptas, laudantium.',
+          'In questa sezione i dati geospaziali raccolti nei geoportali regionali possono essere consultati e filtrati a seconda delle esigenze dell\'utente. Una preview delle risorse con relativa descrizione e strumenti correlati viene mostrata',
         tags: ['DatiGeospaziali', 'Regioni', 'LandCover', 'LandUse'],
       },
       defaul: true,

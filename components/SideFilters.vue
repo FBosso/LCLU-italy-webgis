@@ -8,7 +8,7 @@
               v-model="selected.valuesRegione"
               :items="items.itemsRegione"
               chips
-              clearable
+              
               deletable-chips
               label="Regione"
               multiple
@@ -19,7 +19,7 @@
               v-model="selected.valuesFormatoRisorsa"
               :items="items.itemsFormatoRisorsa"
               chips
-              clearable
+              
               deletable-chips
               label="Formato risorsa"
               multiple
@@ -30,7 +30,7 @@
               v-model="selected.valuesLicenza"
               :items="items.itemsLicenza"
               chips
-              clearable
+              
               deletable-chips
               label="Licenza"
               multiple

@@ -15,7 +15,7 @@
           <TitleDescription :name="nome" :description="descrizione" />
         </div>
         <div class="row">
-          <TableComponent :regione="regione" :licenza="licenza" />
+          <TableComponent :regione="regione" :licenza="licenza" :formato="formato" :inspireTheme="inspireTheme" />
         </div>
         <div class="row">
           <ToolComponent
@@ -93,6 +93,8 @@ export default {
       elastic: data.elastic,
       xc: data.xc,
       yc: data.yc,
+      formato: data.formato,
+      inspireTheme: data.inspireTheme,
 
       strumenti_disponibili: {
         direct_download: {

@@ -45,9 +45,9 @@
     </div>
 
     <div class="square" style="padding: 20px">
-      Zoom: {{ zoom }}<br />
-      Center: {{ center }}<br />
-      Rotation: {{ rotation }}<br />
+      Zoom: {{ Math.round(zoom) }}<br />
+      Center: [{{ Math.round(center[0])}} , {{Math.round(center[1])}}]<br />
+      Rotation: {{ Math.round(rotation) }}<br />
     </div>
     <!--  </client-only> -->
   </div>
@@ -125,9 +125,10 @@ export default {
 
 <style scoped>
 .square {
-  background: rgb(163, 163, 163);
+  background: rgb(60, 128, 125);
   border-radius: 10px;
   margin-top: 10px;
+  color: white;
 }
 .map {
   height: 455px;

@@ -1,6 +1,6 @@
 <template>
   <div class="single-resource">
-    <div class="row">
+    <div class="row p-2">
       <h2>{{ nome }}</h2>
       <hr />
     </div>
