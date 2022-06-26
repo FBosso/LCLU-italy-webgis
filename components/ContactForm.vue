@@ -96,8 +96,8 @@ of the possible way in wich the user can reach us). No parameters are needed to 
         <textarea
           name="message"
           placeholder="Messaggio"
-          class="form-control"
-          rows="13"
+          class="form-control mt-3"
+          rows="15"
         ></textarea>
         <div class="form-group">
           <br />

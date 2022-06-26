@@ -23,7 +23,7 @@ body {
 /* CSS snippet che sta sotto o di fianco al titolo  */
 .snippet {
   color: rgba(0, 0, 0, 0.7);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   text-align: justify;
 }
 @media screen and (max-width: 576px) {
