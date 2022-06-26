@@ -5,7 +5,7 @@ export default async (models) => {
             regione: "EMILIA ROMAGNA",
             licenza: "CC BY 2.5",
             descrizione: 'Shapefile estratti dallo strato cartografico "Aree forestali aggiornamento 2014" (consultabile tramite il GIS WEB della Cartografia interattiva del Sistema Informativo Forestale regionale e distribuito anche come servizio WMS all’indirizzo http://servizigis.regione.emilia-romagna.it/wms/aree_forestali ). Lo strato cartografico "Aree forestali aggiornamento 2014" è la revisione regionale delle precedenti carte forestali realizzate dalle singole Amministrazioni Provinciali; si basa sulla fotointerpretazione del volo AGEA 2011 ma recepisce, ove disponibili, anche fonti informative più recenti. L\'indagine regionale rappresenta il quadro conoscitivo aggiornato, ma non sostituisce le carte provinciali qualora esse siano recepite dagli strumenti pianificatori vigenti. Di seguito sono scaricabili gli shapefile relativi alle coperture delle 9 province dell\'Emilia-Romagna.',
-            wfs: "",
+            wfs: "prova",
             wms: "https://servizigis.regione.emilia-romagna.it/wms/aree_forestali?&service=wms&version=1.3.0&request=GetCapabilities",
             wmsLayers: "",
             arcgis: "",

@@ -8,7 +8,7 @@
       />
       <div class="row mt-5">
         <div class="col-xxl-3">
-          <div class="row">
+          <div class="mb-2">
             <div class="col-xxl-3 center">
               <img
                 class="foto"
@@ -18,14 +18,14 @@
             </div>
            
           </div>
-          <div class="row">
+          <div class="row mb-2">
             <div class="col-xxl" style="padding-right:0px;">
               <div class="contacts mt-3 mb-3">
-                <span class="general-contact">Name</span> <br> Francesco
+                <span class="general-contact">Nome</span> <br> Francesco
                 <br /><hr>
-                <span class="general-contact">Surname</span> <br> Bosso
+                <span class="general-contact">Cognome</span> <br> Bosso
                 <br /><hr>
-                <span class="general-contact">Phone</span> <br> +39 3469601901
+                <span class="general-contact">Telefono</span> <br> +39 3469601901
                 <br /><hr>
                 <span class="general-contact">Linkedin</span> <br>
                 <a href="https://www.linkedin.com/in/francesco-bosso-614814130/"
@@ -68,7 +68,7 @@ export default {
 <style scoped>
 .foto {
   border-radius: 10px;
-  height: 340px;
+  height: 305px;
 }
 .general-contact {
   font-size: 20px;

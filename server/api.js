@@ -1,3 +1,4 @@
+import { BADFLAGS } from 'dns'
 import { DATE } from 'sequelize'
 
 const express = require('express')
@@ -10,7 +11,7 @@ const { Client } = require('@elastic/elasticsearch');
 
 
 /* DEV */
-/* const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
+const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
 })
 
@@ -20,10 +21,10 @@ const client = new Client({
         username: 'elastic',
         password: 'UuraDFRJ6iedIEhgqNcaEdbb'
     }
-}); */
+});
 
 /* PROD */
-const pg = require('pg')
+/* const pg = require('pg')
 pg.defaults.ssl = true
 const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
@@ -37,7 +38,7 @@ const client = new Client({
         username: process.env.ELASTIC_USER,
         password: process.env.ELASTIC_PASSWORD
     }
-});
+}); */
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
@@ -163,12 +164,12 @@ async function runMainApi() {
         valuesFormatoRisorsa.shift()
         const valuesLicenza = req.params.valuesLicenza.split(',')
         valuesLicenza.shift()
-        const wfs = req.params.wfs
-        const wms = req.params.wms
-        const arcgis = req.params.arcgis
-        const directDownload = req.params.directDownload
-        const metadataSite = req.params.metadataSite
-        const metadataXml = req.params.metadataXml
+        const wfs = (req.params.wfs === 'true')
+        const wms = (req.params.wms === 'true')
+        const arcgis = (req.params.arcgis === 'true')
+        const directDownload = (req.params.directDownload === 'true')
+        const metadataSite = (req.params.metadataSite === 'true')
+        const metadataXml = (req.params.metadataXml === 'true')
 
          
         if (valuesRegione.length > 0) {
@@ -181,32 +182,82 @@ async function runMainApi() {
             licenze = valuesLicenza
         };
 
-        /* if (req.params.wfs) {
-            wfs_bool = ""
-        } else {
-            wfs_bool
+        let wfs_object
+        let wms_object
+        let arcgis_object
+        let directDownload_object
+        let metadataSite_object
+        let metadataXml_object
+
+
+        if (wfs_bool == wfs){
+            wfs_object = {
+                [Op.ne]: ''
+            }
+        }else{
+            wfs_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
         };
-        if (req.params.wms) {
-            attribute_list.push('wms')
+        if (wms_bool == wms){
+            wms_object = {
+                [Op.ne]: ''
+            }
+        }else{
+            wms_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
         };
-        if (req.params.arcgis) {
-            attribute_list.push('arcgis')
+        if (arcgis_bool == arcgis){
+            arcgis_object = {
+                [Op.ne]: ''
+            }
+        }else{
+            arcgis_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
         };
-        if (req.params.directDownload) {
-            attribute_list.push('directDownload')
+        
+        if (directDownload_bool == directDownload){
+            directDownload_object = {
+                [Op.ne]: ''
+            }
+        }else{
+            directDownload_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
         };
-        if (req.params.metadataSite) {
-            attribute_list.push('metadataSite')
+
+        if (metadataSite_bool == metadataSite){
+            metadataSite_object = {
+                [Op.ne]: ''
+            }
+        }else{
+            metadataSite_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
         };
-        if (req.params.metadataXml) {
-            attribute_list.push('metadataXml')
-        }; */
+        if (metadataXml_bool == metadataXml){
+            metadataXml_object = {
+                [Op.ne]: ''
+            }
+        }else{
+            metadataXml_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
+        };
 
         const dati = await models.Risorse.findAll({
             where: {
                 regione: regioni,
                 formato: formati_risorse,
-                licenza: licenze
+                licenza: licenze,
+                wfs: wfs_object,
+                wms: wms_object,
+                arcgis: arcgis_object,
+                directDownload: directDownload_object,
+                metadataSite: metadataSite_object,
+                metadataXml: metadataXml_object
             }
         })
         return res.json(dati)

@@ -163,7 +163,7 @@ export default {
         wms: false,
         arcgis: false,
         directDownload: false,
-
+        
         metadataSite: false,
         metadataXml: false,
       },
