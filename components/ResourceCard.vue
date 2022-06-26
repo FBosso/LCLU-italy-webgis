@@ -212,7 +212,7 @@ figure:hover + span {
 .item {
   border: solid 2px white;
   border-radius: 10px;
-  background: rgb(128, 60, 65);
+  background: rgba(60, 99, 128, 0.621);
   color: white;
   margin: 5px;
 }

@@ -123,4 +123,8 @@ export default {
   align-items: center;
   text-align: justify;
 }
+a{
+  color: rgb(42, 42, 198);
+  text-decoration: none;
+}
 </style>

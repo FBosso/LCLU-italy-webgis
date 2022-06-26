@@ -33,7 +33,7 @@
           </vl-source-vector-tile>
         </vl-layer-vector-tile> -->
 
-        <!-- PRIDUCTION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- PRODUCTION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
         <vl-layer-vector-tile>
           <vl-source-vector-tile
