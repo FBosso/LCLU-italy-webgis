@@ -8,11 +8,11 @@
       />
     </div>
     <div class="row mt-4">
-      <div class="col-xl-3 mb-5">
+      <div class="col-lg-4">
         <SideFilters />
       </div>
-      <div class="col" v-if="defaul != true">
-        <ResourceCardMod
+      <div class="col-lg-8" v-if="defaul != true">
+        <ResourceCard
           v-for="res in refresh"
           :key="res.id"
           :nome="res.nome"
@@ -26,8 +26,8 @@
           :id="res.id"
         />
       </div>
-      <div class="col" v-if="defaul == true">
-        <ResourceCardMod
+      <div class="col-lg-8" v-if="defaul == true">
+        <ResourceCard
           v-for="res in risorse"
           :key="res.id"
           :nome="res.nome"

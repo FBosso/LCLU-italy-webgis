@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-card style="border: solid 2px black; border-radius: 10px; padding: 10px">
+    <v-card class="snippet-filters">
       <v-container fluid>
         <v-row align="center">
           <v-col cols="12">
@@ -39,7 +39,7 @@
 
           <v-container>
             <v-container>
-              <v-container style="border: solid 2px black; border-radius: 10px">
+              <v-container class="switch">
                 <v-row>
                   <v-col cols="6">
                     <v-switch v-model="selected.wfs" :label="`WFS`"></v-switch>
@@ -65,7 +65,7 @@
           </v-container>
           <v-container>
             <v-container>
-              <v-container style="border: solid 2px black; border-radius: 10px">
+              <v-container class="switch">
                 <v-row>
                   <v-col cols="6">
                     <v-switch
@@ -228,5 +228,15 @@ export default {
   text-align: center;
   align-content: center;
   align-items: center;
+}
+.snippet-filters{
+  background-color: #fff;
+  border: 2px solid #959595;
+  border-radius: 10px; 
+  padding: 10px;
+}
+.switch{
+  border: 1.5px solid #959595;
+  border-radius: 10px
 }
 </style>

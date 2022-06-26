@@ -1,17 +1,15 @@
 <template>
-  <div class="container mt-5">
-    <!-- this is the first (top) row of the homepage and includes
-     the Title of the site, a small descritpion of its purpose 
-    and an animation -->
+  <div class="container mt-4">
     <div class="row">
       <div class="col-md margin-top">
         <h1 class="header-index mb-4">Land Cover & Land Use</h1>
         <p class="snippet mb-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-          quibusdam cupiditate veniam necessitatibus tempora, obcaecati
-          
+          In questa applicazione Web è possibile trovare una sintesi
+          dello stato di fatto delle risorse in termini di Land Cover e Land Use
+          in Italia. L'obiettivo della applicazione è di fungere da "Hot
+          Spot" di aggregazione per le risorse di Uso e Copertura del suolo
         </p>
-        <div class="center">
+        <div class="center mb-4">
           <NuxtLink to="progetto">
             <div class="button btn">Leggi di più sul progetto</div>
           </NuxtLink>
@@ -23,16 +21,13 @@
           src="https://assets6.lottiefiles.com/packages/lf20_izy5ndvp.json"
           background="transparent"
           speed="1"
-          style="width: 600px; height: 550px"
+          style="width: 600px; height: 650px"
           loop
           autoplay
         ></lottie-player>
       </div>
     </div>
     <div class="row mt-4 g-0">
-      <!-- this component creates the 4 main sections in which the site is 
-      structured (POIs, Itineraries, Events and Services) -->
-
       <div :class="`image col-sm-7 p-2 active position-relative menu`">
         <NuxtLink :to="`${sections.s1.path}`">
           <img
@@ -104,14 +99,15 @@ export default {
         s1: {
           id: 0,
           name: 'Risorse',
-          image: 'https://oceanservice.noaa.gov/facts/lclu1.jpg',
+          image: 'https://i.ibb.co/tDzhZrx/risorse.webp',
           col: 7,
           path: 'risorse',
         },
         s2: {
           id: 1,
           name: 'Indici',
-          image: 'https://drive.google.com/uc?export=view&id=1b3E3EdpitR4fZP47a__2QsZBtRLnQ2ax',
+          image:
+            'https://i.ibb.co/sqzXHVt/stats.webp',
           col: 5,
           path: 'indici',
         },
@@ -119,7 +115,7 @@ export default {
           id: 2,
           name: 'Contatti',
           image:
-            'https://st4.depositphotos.com/1842549/21133/i/450/depositphotos_211331124-stock-photo-user-profile-icon-user-profile.jpg',
+            'https://i.ibb.co/r4BrpvB/contatti.webp',
           col: 5,
           path: 'contatti',
         },
@@ -127,7 +123,7 @@ export default {
           id: 3,
           name: 'Progetto',
           image:
-            'https://www.efgs.info/wp-content/uploads/news/2016/GGIM_logo.png',
+            'https://i.ibb.co/KGQb7YC/project.webp',
           col: 7,
           path: 'progetto',
         },
