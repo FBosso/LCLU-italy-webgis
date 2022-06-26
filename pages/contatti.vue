@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5">
-    <div class="row">
+    <div class="row mb-3">
       <TopPageGeneric
         :name="topData.name"
         :description="topData.description"
@@ -57,7 +57,7 @@ export default {
       topData: {
         name: 'Contatti',
         description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, soluta deserunt dolor asperiores amet aut doloremque illum similique, rem voluptates temporibus animi excepturi. Fugit alias quae inventore asperiores? Voluptas, laudantium.',
+          'In questa sezione sono presenti i dati dello studente che ha sviluppato il progetto ed i relativi contatti. Inoltre, un form è messo a disposizione degli utenti per ricevere assistenza a fronte di eventuali dubbi riscontrati durante l\'uso dell\'applicazione web',
         tags: ['Mail', 'Phone', 'Linkedin', 'Form'],
       },
     }

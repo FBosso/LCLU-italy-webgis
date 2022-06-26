@@ -1,10 +1,12 @@
 <template>
   <div class="container mt-5">
+    <div class="row mb-3">
     <TopPageGeneric
       :name="topData.name"
       :description="topData.description"
       :tags="topData.tags"
     />
+    </div>
     <div class="subtitle">Risorse</div>
 
     <table class="table">

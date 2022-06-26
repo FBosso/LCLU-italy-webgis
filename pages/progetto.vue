@@ -1,10 +1,12 @@
 <template>
   <div class="container mt-5">
+    <div class="row mb-3">
     <TopPageGeneric
       :name="topData.name"
       :description="topData.description"
       :tags="topData.tags"
     />
+    </div>
     <div class="mite">
       <div class="subtitle">Ministero della Transizione Ecologica</div>
       <div class="row">
@@ -106,7 +108,7 @@ export default {
       topData: {
         name: 'Progetto',
         description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, soluta deserunt dolor asperiores amet aut doloremque illum similique, rem voluptates temporibus animi excepturi. Fugit alias quae inventore asperiores? Voluptas, laudantium.',
+          'In questa sezione vengono spiegati i punti nevralgici dai quali il presente progetto si è sviluppato introducendo il contesto di lavoro, le tematiche sviluppate e il tipo di dati oggetto di analisi e ricerca durante il corso di tutto il tirocinio',
         tags: ['UN-GGIM', 'MiTE', 'LandCover', 'LandUse'],
       },
     }
