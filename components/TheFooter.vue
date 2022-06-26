@@ -6,7 +6,7 @@ certain order and do not act directly on the layout for future modifications*/
     
 /* ############################## END COMPONENT DESCRIPTION ############################### */
 <template>
-<!-- this footer is composed by 4 main columns -->
+  <!-- this footer is composed by 4 main columns -->
   <div class="footer">
     <footer>
       <div class="container">
@@ -15,42 +15,46 @@ certain order and do not act directly on the layout for future modifications*/
           <!-- Column 1 - It contains the logo of our website and some generic info -->
           <div class="col-xl space">
             <NuxtLink to="/">
-            <div class="logo">
-              <img
-                class="logo-img"
-                src="https://i.ibb.co/NspjQxV/logo.webp"
-                alt="Logo"
-              />
+              <div class="logo">
+                <img
+                  class="logo-img"
+                  src="https://i.ibb.co/NspjQxV/logo.webp"
+                  alt="Logo"
+                />
               </div>
             </NuxtLink>
             <div class="paragraph-sx">
+              <span class="subtitle-footer">Studente:</span> Bosso Francesco
+              <br>
               <span class="subtitle-footer">Bergamo, Lombardia (IT)</span>
               <br />
               <span class="subtitle-footer">Postal Code:</span> 24121-24129
               <br />
-              <span class="subtitle-footer">Coordinates:</span> 45°41′N ,9°40′E
-              <br>
-              <span class="subtitle-footer">Neighboring municipalities:</span>
-              Azzano San Paolo,
+              <hr class="line">
+              <span class="subtitle-footer">Università:</span> PoliMI
+              <br />
+              <span class="subtitle-footer">Tirocinio presso:</span> MiTE
+              
             </div>
           </div>
           <!-- Column 2 - It contains the vision that we want to accomplish with our website -->
           <div class="col-xl space">
             <h1 class="title-footer">Vision</h1>
             <p class="paragraph">
-              The vision of Locus is to provide an immersive and wonderful
-              experience in visiting one of the most beautiful city of northern
-              Italy: Bergamo. The history of Bergamo is full of art
+              La "vision" di questo progetto è quella di fornire, a studenti,
+              professionisti e analisti, una via d'accesso preferenziale e
+              strutturata nei confronti di dati di Land Cover e Land Use su
+              scala nazionale.
             </p>
           </div>
           <!-- Column 3 - It contains the links to all the sections of the website -->
           <div class="col-xl space">
             <NuxtLink class="section" to="/risorse">Risorse</NuxtLink>
-            <hr />
+            <hr class="line" />
             <NuxtLink class="section" to="/indici">Indici</NuxtLink>
-            <hr />
+            <hr class="line" />
             <NuxtLink class="section" to="/progetto">Progetto</NuxtLink>
-            <hr />
+            <hr class="line" />
             <NuxtLink class="section" to="/contatti">Contatti</NuxtLink>
           </div>
           <!-- Column 4 - It contains the icons of all social media pages of our site -->
@@ -81,7 +85,7 @@ certain order and do not act directly on the layout for future modifications*/
                 /></a>
               </div>
               <div class="social col">
-                <a href="https://github.com/FBosso/Locus"
+                <a href="https://github.com"
                   ><img
                     class="icons"
                     src="https://i.ibb.co/16mgKT5/github.webp"
@@ -166,12 +170,16 @@ export default {
     text-align: left;
   }
 }
-.paragraph-sx{
+.paragraph-sx {
   text-align: left;
   font-size: 0.95rem;
   color: white;
 }
 .space {
   padding: 40px;
+}
+.line{
+  border: solid 1px white;
+  background: white;
 }
 </style>
