@@ -107,10 +107,10 @@ export default {
         },
         s2: {
           id: 1,
-          name: 'Indici',
+          name: 'Statistiche',
           image: 'https://i.ibb.co/sqzXHVt/stats.webp',
           col: 5,
-          path: 'indici',
+          path: 'statistiche',
         },
         s3: {
           id: 2,
@@ -129,8 +129,6 @@ export default {
       },
     }
   },
-
-  /* CAMBIARE METADATI DI QUESTA SEZIONE +++++++++++++++ */
   head() {
     return {
       title: `LC & LU | Homepage`,
@@ -138,35 +136,30 @@ export default {
         {
           hid: 'descriptionHomepage',
           name: 'description',
-          content: `Homepage showing all possible sections of the site`,
+          content: `Homepage che mostra tutte le possibili vie d'acesso alle varie sezioni del sito`,
         },
         {
           hid: 'keywordsHomepage',
           name: 'keywords',
           content: [
             'Homepage',
-            'Itineraries',
-            'Places',
-            'Events',
-            'Services',
-            'About the town',
-            'Contact-us',
-            'Fun',
-            'Culture',
-            'Art Town',
-            'Bergamo',
+            'Statistiche',
+            'Risorse',
+            'Contatti',
+            'Progetto',
+            'Land Cover',
+            'Land Use',
+            'Uso del suolo',
+            'Copertura del suolo',
           ],
         },
       ],
     }
   },
-  /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 }
 </script>
 
 <style scoped>
-/* START Styles for top part (title + description + animation) +++ */
-
 .header-index {
   font-weight: 900;
   font-size: 5.3vw;
@@ -196,11 +189,6 @@ export default {
     margin-top: 0;
   }
 }
-
-/* END Styles for top part (title + description + animation) +++ */
-
-/* START Styles for bottom part (4 cards) +++ */
-
 .image {
   padding: 8px;
   height: 400px;
@@ -252,7 +240,6 @@ export default {
     text-align: center;
   }
 }
-/* END Styles for bottom part (4 cards) +++ */
 .button {
   padding: 1rem 4rem;
   border-radius: 100rem;
@@ -265,7 +252,4 @@ export default {
 .button:hover {
   width: 25.5rem;
 }
-/* body{
-  zoom:100%
-} */
 </style>

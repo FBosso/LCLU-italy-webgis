@@ -25,20 +25,21 @@ certain order and do not act directly on the layout for future modifications*/
             </NuxtLink>
             <div class="paragraph-sx">
               <span class="subtitle-footer">Studente:</span> Bosso Francesco
-              <br>
-              <span class="subtitle-footer">Bergamo, Lombardia (IT)</span>
               <br />
-              <span class="subtitle-footer">Postal Code:</span> 24121-24129
+              <span class="subtitle-footer">Codice persona:</span> 10555965
               <br />
               <hr class="line">
-              <span class="subtitle-footer">Università:</span> PoliMI
+              <span class="subtitle-footer">Tutor Accademico:</span> Prof. Maria Brovelli
               <br />
-              <span class="subtitle-footer">Tirocinio presso:</span> MiTE
+              <span class="subtitle-footer">Tutors Ministero:</span> Dott. Tomellini Renzo
+              <br />
+              <span class="subtitle-footer"></span> Dott. Magagna Davide
+              
               
             </div>
           </div>
           <!-- Column 2 - It contains the vision that we want to accomplish with our website -->
-          <div class="col-xl space">
+          <!-- <div class="col-xl space">
             <h1 class="title-footer">Vision</h1>
             <p class="paragraph">
               La "vision" di questo progetto è quella di fornire, a studenti,
@@ -46,7 +47,7 @@ certain order and do not act directly on the layout for future modifications*/
               strutturata nei confronti di dati di Land Cover e Land Use su
               scala nazionale.
             </p>
-          </div>
+          </div> -->
           <!-- Column 3 - It contains the links to all the sections of the website -->
           <div class="col-xl space">
             <NuxtLink class="section" to="/risorse">Risorse</NuxtLink>
@@ -69,7 +70,7 @@ certain order and do not act directly on the layout for future modifications*/
                 /></a>
               </div>
               <div class="social col">
-                <a href="https://www.linkedin.com"
+                <a href="https://www.linkedin.com/in/francesco-bosso-614814130/"
                   ><img
                     class="icons"
                     src="https://i.ibb.co/6tSw7GQ/linkedin.webp"
@@ -85,7 +86,7 @@ certain order and do not act directly on the layout for future modifications*/
                 /></a>
               </div>
               <div class="social col">
-                <a href="https://github.com"
+                <a href="https://github.com/FBosso/LCLU-italy-webgis"
                   ><img
                     class="icons"
                     src="https://i.ibb.co/16mgKT5/github.webp"
@@ -151,7 +152,7 @@ export default {
   color: white;
 }
 .logo {
-  text-align: left;
+  text-align: center;
 }
 .logo-img {
   height: 60px;
@@ -171,7 +172,7 @@ export default {
   }
 }
 .paragraph-sx {
-  text-align: left;
+  text-align: center;
   font-size: 0.95rem;
   color: white;
 }
@@ -181,5 +182,6 @@ export default {
 .line{
   border: solid 1px white;
   background: white;
+  margin: 25px
 }
 </style>

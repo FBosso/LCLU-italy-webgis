@@ -8,7 +8,6 @@
               v-model="selected.valuesRegione"
               :items="items.itemsRegione"
               chips
-              
               deletable-chips
               label="Regione"
               multiple
@@ -19,9 +18,8 @@
               v-model="selected.valuesFormatoRisorsa"
               :items="items.itemsFormatoRisorsa"
               chips
-              
               deletable-chips
-              label="Formato risorsa"
+              label="Modello dati"
               multiple
             ></v-autocomplete>
           </v-col>
@@ -30,13 +28,11 @@
               v-model="selected.valuesLicenza"
               :items="items.itemsLicenza"
               chips
-              
               deletable-chips
               label="Licenza"
               multiple
             ></v-autocomplete>
           </v-col>
-
           <v-container>
             <v-container>
               <v-container class="switch">
@@ -69,14 +65,8 @@
                 <v-row>
                   <v-col cols="6">
                     <v-switch
-                      v-model="selected.metadataSite"
-                      :label="`Metadati sito`"
-                    ></v-switch>
-                  </v-col>
-                  <v-col cols="6">
-                    <v-switch
                       v-model="selected.metadataXml"
-                      :label="`Metadati XML`"
+                      :label="`Metadati`"
                     ></v-switch>
                   </v-col>
                 </v-row>
@@ -155,15 +145,15 @@ export default {
 
       /* items scelti */
       selected: {
-        valuesRegione: [" "],
-        valuesFormatoRisorsa: [" "],
-        valuesLicenza: [" "],
+        valuesRegione: [' '],
+        valuesFormatoRisorsa: [' '],
+        valuesLicenza: [' '],
 
         wfs: false,
         wms: false,
         arcgis: false,
         directDownload: false,
-        
+
         metadataSite: false,
         metadataXml: false,
       },
@@ -229,14 +219,14 @@ export default {
   align-content: center;
   align-items: center;
 }
-.snippet-filters{
+.snippet-filters {
   background-color: #fff;
   border: 2px solid #959595;
-  border-radius: 10px; 
+  border-radius: 10px;
   padding: 10px;
 }
-.switch{
+.switch {
   border: 1.5px solid #959595;
-  border-radius: 10px
+  border-radius: 10px;
 }
 </style>

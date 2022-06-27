@@ -10,6 +10,9 @@
     <div class="row mt-4">
       <div class="col-lg-4">
         <SideFilters />
+        <div class="note">
+          NOTE: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum incidunt repudiandae pariatur eveniet non autem iure quod eaque nisi nihil eos, consectetur, culpa, alias velit commodi sit quam vel facere.
+        </div>
       </div>
       <div class="col-lg-8" v-if="defaul != true">
         <ResourceCard
@@ -111,8 +114,10 @@ export default {
     updateResources: async function (selected) {
       console.log('ciao')
       console.log(selected)
+      let metadataSite = selected.metadataXml
+      console.log(metadataSite)
       const data  = await this.$axios.$get(
-        `/api/datiFiltrati/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${selected.metadataSite}/${selected.metadataXml}`
+        `/api/datiFiltrati/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${metadataSite}/${selected.metadataXml}`
       )
       console.log(data)
       this.defaul = true
@@ -124,4 +129,10 @@ export default {
 </script>
 
 <style scoped>
+.note{
+  border: solid 2px black;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: justify;
+}
 </style>

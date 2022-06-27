@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <client-only>
+    <!-- <client-only> -->
     <div class="map">
       <vl-map
         v-if="!reloading"
@@ -26,30 +26,30 @@
 
         <!-- DEVELOPMENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
-        <!-- <vl-layer-vector-tile v-if="elastic != ''">
+        <vl-layer-vector-tile v-if="elastic != ''">
           <vl-source-vector-tile
             :url="`http://localhost:3000/api/tiles/${elastic}/{z}/{x}/{y}`"
           >
           </vl-source-vector-tile>
-        </vl-layer-vector-tile> -->
+        </vl-layer-vector-tile>
 
         <!-- PRODUCTION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
-        <vl-layer-vector-tile>
+        <!-- <vl-layer-vector-tile>
           <vl-source-vector-tile
             :url="`https://lcluitalia.herokuapp.com/api/tiles/${elastic}/{z}/{x}/{y}`"
           ></vl-source-vector-tile>
-        </vl-layer-vector-tile>
-
+        </vl-layer-vector-tile> -->
+        
       </vl-map>
     </div>
 
     <div class="square" style="padding: 20px">
-      Zoom: {{ Math.round(zoom) }}<br />
-      Center: [{{ Math.round(center[0])}} , {{Math.round(center[1])}}]<br />
-      Rotation: {{ Math.round(rotation) }}<br />
+      Zoom: {{ zoom }}<br />
+      Center: {{ center }} <br />
+      Rotation: {{ rotation }}<br />
     </div>
-     </client-only>
+    <!-- </client-only> -->
   </div>
 </template>
 
@@ -60,9 +60,9 @@ export default {
     return {
       useUrlFunction: true,
       zoom: 7,
-      center: [this.xc, this.yc],
+      center: [parseFloat(this.xc), parseFloat(this.yc)],
       rotation: 0,
-      geolocPosition: undefined,
+      //geolocPosition: undefined,
       reloading: false,
       opacity: 0.7,
     }
@@ -90,14 +90,35 @@ export default {
     },
   },
   methods: {
-    /* loadingStrategyFactory() {
+    changeMap() {
+      this.useUrlFunction = !this.useUrlFunction
+      this.reloading = true
+      this.$nextTick(() => {
+        this.reloading = false
+      })
+    },
+    urlFunction(extent, resolution, projection) {
+      return (
+        'https://ahocevar.com/geoserver/wfs?service=WFS&' +
+        'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
+        'outputFormat=application/json&srsname=' +
+        projection +
+        '&maxFeatures=50' +
+        '&' +
+        'bbox=' +
+        extent.join(',') +
+        ',' +
+        projection
+      )
+    },
+    loadingStrategyFactory() {
       return this.$loadingBBox()
     },
     createMvtFormat() {
       return new MVT({
         featureClass: Feature,
       })
-    }, */
+    },
   },
 }
 </script>
@@ -113,7 +134,7 @@ export default {
   height: 455px;
   margin-top: 10px;
 }
-.ol-unselectable{
+.ol-unselectable {
   border-radius: 10px;
 }
 </style>

@@ -8,7 +8,7 @@ const { Client } = require('@elastic/elasticsearch');
 
 
 /* DEV */
-/* const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
+const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
 })
 
@@ -18,10 +18,10 @@ const client = new Client({
         username: 'elastic',
         password: 'UuraDFRJ6iedIEhgqNcaEdbb'
     }
-}); */
+});
 
 /* PROD */
-const pg = require('pg')
+/* const pg = require('pg')
 pg.defaults.ssl = true
 const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
@@ -35,7 +35,7 @@ const client = new Client({
         username: process.env.ELASTIC_USER,
         password: process.env.ELASTIC_PASSWORD
     }
-});
+}); */
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
@@ -136,7 +136,7 @@ async function runMainApi() {
 
     app.get('/datiFiltrati/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml', async (req, res) => {
 
-        
+
         let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTO", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
             "EMILIA ROMAGNA", "TOSCANA", "UMBRIA", "MARCHE", "LAZIO", "ABRUZZO", "MOLISE", "CAMPANIA", "PUGLIA",
             "BASILICATA", "CALABRIA", "SICILIA", "SARDEGNA"]
@@ -168,7 +168,7 @@ async function runMainApi() {
         const metadataSite = (req.params.metadataSite === 'true')
         const metadataXml = (req.params.metadataXml === 'true')
 
-         
+
         if (valuesRegione.length > 0) {
             regioni = valuesRegione
         };
@@ -187,58 +187,58 @@ async function runMainApi() {
         let metadataXml_object
 
 
-        if (wfs_bool == wfs){
+        if (wfs_bool == wfs) {
             wfs_object = {
                 [Op.ne]: ''
             }
-        }else{
+        } else {
             wfs_object = {
                 [Op.notIn]: ['array', 'casuale']
             }
         };
-        if (wms_bool == wms){
+        if (wms_bool == wms) {
             wms_object = {
                 [Op.ne]: ''
             }
-        }else{
+        } else {
             wms_object = {
                 [Op.notIn]: ['array', 'casuale']
             }
         };
-        if (arcgis_bool == arcgis){
+        if (arcgis_bool == arcgis) {
             arcgis_object = {
                 [Op.ne]: ''
             }
-        }else{
+        } else {
             arcgis_object = {
                 [Op.notIn]: ['array', 'casuale']
             }
         };
-        
-        if (directDownload_bool == directDownload){
+
+        if (directDownload_bool == directDownload) {
             directDownload_object = {
                 [Op.ne]: ''
             }
-        }else{
+        } else {
             directDownload_object = {
                 [Op.notIn]: ['array', 'casuale']
             }
         };
 
-        if (metadataSite_bool == metadataSite){
+        if (metadataSite_bool == metadataSite) {
             metadataSite_object = {
                 [Op.ne]: ''
             }
-        }else{
+        } else {
             metadataSite_object = {
                 [Op.notIn]: ['array', 'casuale']
             }
         };
-        if (metadataXml_bool == metadataXml){
+        if (metadataXml_bool == metadataXml) {
             metadataXml_object = {
                 [Op.ne]: ''
             }
-        }else{
+        } else {
             metadataXml_object = {
                 [Op.notIn]: ['array', 'casuale']
             }
@@ -253,8 +253,11 @@ async function runMainApi() {
                 wms: wms_object,
                 arcgis: arcgis_object,
                 directDownload: directDownload_object,
-                metadataSite: metadataSite_object,
-                metadataXml: metadataXml_object
+                [Op.or]: [
+                    {metadataSite: metadataSite_object},
+                    {metadataXml: metadataXml_object}
+                ],
+
             }
         })
         return res.json(dati)
