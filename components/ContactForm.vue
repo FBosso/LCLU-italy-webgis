@@ -115,7 +115,7 @@ of the possible way in wich the user can reach us). No parameters are needed to 
           </div>
         </div>
         <br />
-        <button class="btn btn-primary" type="submit">Invia</button>
+        <button class="btn bottone" type="submit">Invia</button>
       </form>
     </div>
 </template>
@@ -131,5 +131,15 @@ export default {
   border: 2px solid rgb(182, 182, 182);
   border-radius: 10px;
   padding: 30px;
+}
+.bottone{
+  border: solid 2px white;
+  background: rgb(251, 237, 167);
+  border-radius: 10px;
+  transition: 0.25s linear;
+}
+.bottone:hover{
+  background: transparent;
+  border: solid 2px black;
 }
 </style>

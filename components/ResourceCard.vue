@@ -13,6 +13,7 @@
                 class="round-images"
                 height="170px"
                 src="https://i.ibb.co/gDwrBQp/friuli.webp"
+                alt="logo regione"
               />
             </figure>
           </div>
@@ -242,7 +243,7 @@ figure:hover + span {
 .item {
   border: solid 2px white;
   border-radius: 10px;
-  background: rgba(60, 99, 128, 0.621);
+  background: rgb(60, 99, 128);
   color: white;
   margin: 5px;
 }

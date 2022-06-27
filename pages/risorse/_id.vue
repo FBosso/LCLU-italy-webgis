@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-lg order-lg-1 order-2">
+      <div class="col-xl order-xl-1 order-2">
         <MapComponent
           :wms="wms"
           :wmsLayers="wmsLayers"
@@ -10,7 +10,7 @@
           :yc="yc"
         />
       </div>
-      <div class="col-lg order-lg-2 order-1">
+      <div class="col-xl order-xl-2 order-1">
         <div class="row">
           <TitleDescription :name="nome" :description="descrizione" />
         </div>

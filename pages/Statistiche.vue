@@ -31,6 +31,7 @@
 
     <div class="subtitle mb-3">Jupyter notebook</div>
     <iframe
+    title="Jupyter notebook analisi dati"
       src="https://fbosso.github.io/CNITA"
       width="100%"
       height="2000px"
