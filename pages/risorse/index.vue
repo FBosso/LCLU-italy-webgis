@@ -24,6 +24,7 @@
           :metadataXml="res.metadataXml"
           :descrizione="res.descrizione"
           :id="res.id"
+          :regione="res.regione"
         />
       </div>
       <div class="col-lg-8" v-if="defaul == true">
@@ -39,6 +40,7 @@
           :metadataXml="res.metadataXml"
           :descrizione="res.descrizione"
           :id="res.id"
+          :regione="res.regione"
         />
       </div>
     </div>
@@ -51,8 +53,44 @@ export default {
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/risorse')
     console.log(data)
+    let listaRisorse = []
+    for (let index = 0; index < data.length; index++) {
+      listaRisorse.push(data[index].nome)
+    }
     return {
       risorse: data,
+      listaRisorse: listaRisorse
+    }
+  },
+  head() {
+    return {
+      title: 'Tutte le risorse | Risorse',
+      meta: [
+        {
+          hid: 'descriptionTutteRisorse',
+          name: 'description',
+          content: `Tutte le risorse e le informazioni ad esse correlate. Possibilità di porre filtri di ricerca per le risorse interesate e possibiltà di accesso alle ringole risorse`,
+        },
+        {
+          hid: 'keywordsTutteRisorse',
+          name: 'keywords',
+          content: [
+            'Risorse',
+            'Land Cover',
+            'Land Use',
+            'Copertura del suolo',
+            'Uso del suolo',
+            'wfs',
+            'wms',
+            'arcgis',
+            'download',
+            'shapefile',
+            'raster',
+            'metdadati',
+            this.listaRisorse.toString()
+          ],
+        },
+      ],
     }
   },
   data() {

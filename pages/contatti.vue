@@ -52,6 +52,31 @@
 <script>
 export default {
   name: 'ContattiPage',
+  head() {
+    return {
+      title: 'LC LU Italia | Contatti',
+      meta: [
+        {
+          hid: 'descriptionContatti',
+          name: 'description',
+          content: `Contatti dello sviluppatore in caso di supporto o problematiche riscontrate a livello di applicazione web. Oltre ai contatti personali è fornito un form che consente di porre questioni senza uscire dal sito web`,
+        },
+        {
+          hid: 'keywordsContatti',
+          name: 'keywords',
+          content: [
+            'contatti',
+            'Francesco',
+            'Bosso',
+            'telefono',
+            'linkedin',
+            'mail',
+            'form',
+          ],
+        },
+      ],
+    }
+  },
   data() {
     return {
       topData: {

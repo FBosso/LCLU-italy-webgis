@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col">
+      <div class="col-lg order-lg-1 order-2">
         <MapComponent
           :wms="wms"
           :wmsLayers="wmsLayers"
@@ -10,12 +10,17 @@
           :yc="yc"
         />
       </div>
-      <div class="col">
+      <div class="col-lg order-lg-2 order-1">
         <div class="row">
           <TitleDescription :name="nome" :description="descrizione" />
         </div>
         <div class="row">
-          <TableComponent :regione="regione" :licenza="licenza" :formato="formato" :inspireTheme="inspireTheme" />
+          <TableComponent
+            :regione="regione"
+            :licenza="licenza"
+            :formato="formato"
+            :inspireTheme="inspireTheme"
+          />
         </div>
         <div class="row">
           <ToolComponent
@@ -41,38 +46,37 @@
 <script>
 export default {
   name: 'SingleResourcePage',
-  data() {
+  head() {
     return {
-      /* strumenti_disponibili: {
-        direct_download: {
-          id: 1,
-          name: 'Download',
-          link: this.directDownload
+      title: `${this.nome} | Risorse`,
+      meta: [
+        {
+          hid: 'descriptionSingolaRisorsa',
+          name: 'description',
+          content: `specifica risorsa (${this.nome}) ed informazioni ad essa correlate. Mappa per la visualizzazione online del dato e possibiltà di accesso diretto agli strumenti correlati quali download, metadati, wfs, wms, ecc.`,
         },
-        wms: {
-          id: 2,
-          name: 'WMS',          
+        {
+          hid: 'keywordsSingolaRisorsa',
+          name: 'keywords',
+          content: [
+            'Risorsa',
+            'Land Cover',
+            'Land Use',
+            'Copertura del suolo',
+            'Uso del suolo',
+            'wfs',
+            'wms',
+            'arcgis',
+            'download',
+            'shapefile',
+            'raster',
+            'metdadati',
+            this.nome,
+            this.regione,
+            this.inspireTheme,
+          ],
         },
-        wfs: {
-          id: 3,
-          name: 'WFS',    
-        },
-        ArcGis_SERVER: {
-          id: 4,
-          name: 'ArcGis SERVER',       
-        },
-        metadati1: {
-          id: 5,
-          name: 'Metadati Sito',         
-        },
-        metadati2: {
-          id: 6,
-          name: 'Metadati XML',          
-        },
-      }, */
-      /* url: "https://elastic:UuraDFRJ6iedIEhgqNcaEdbb@geoinformatics-project-07e882.es.us-central1.gcp.cloud.es.io/sampling_points/_mvt/geometry/{z}/{x}/{y}", */
-      /* url: "http://elastic:gVI9PgkBucwq*Yrats4I@localhost:9200/sampling_points/_mvt/geometry/{z}/{x}/{y}", */
-      /* url2: "https://geoservizi.regione.liguria.it/geoserver/wms?version=1.3.0&request=getcapabilities" */
+      ],
     }
   },
   async asyncData({ route, $axios }) {

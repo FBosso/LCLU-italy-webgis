@@ -9,14 +9,14 @@ certain order and do not act directly on the layout for future modifications*/
 
   <nav class="navbar navbar-expand-xl navbar-light px-3 header">
     <!-- <div class="container"> -->
-    <a class="navbar-brand" href="/"
+    <NuxtLink class="navbar-brand" to="/"
       ><img
         class="logo"
         src="https://i.ibb.co/NspjQxV/logo.webp"
         alt="logo"
         width="70"
         height="70"
-    /></a>
+    /></NuxtLink>
     <button
       class="navbar-toggler"
       type="button"
@@ -59,8 +59,8 @@ export default {
           path: '/risorse',
         },
         {
-          name: 'Indici',
-          path: '/indici',
+          name: 'Statistiche',
+          path: '/statistiche',
         },
         {
           name: 'Progetto',
@@ -101,5 +101,8 @@ a {
 }
 .header {
   background: rgb(60, 128, 125);
+}
+nav{
+  zoom: 90%
 }
 </style>

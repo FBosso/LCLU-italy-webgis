@@ -103,6 +103,33 @@
 <script>
 export default {
   name: 'ProgettoPage',
+  head() {
+    return {
+      title: 'LC LU Italia | Progetto',
+      meta: [
+        {
+          hid: 'descriptionProgetto',
+          name: 'description',
+          content: `Spiegazione del progetto che ha dato origine allo sviluppo della presente applicazione web. Partendo dal tirocinio al Ministero della Transizione Ecologica, passando per UN-GGIM fino ad arrivare al concetto stesso di dati di land cover e land use`,
+        },
+        {
+          hid: 'keywordsProgetto',
+          name: 'keywords',
+          content: [
+            'UN-GGIM',
+            'UNGGIM',
+            'MiTE',
+            'MITE',
+            'Ministero della Transizione Ecologica',
+            'Land Cover',
+            'Land Use',
+            'Copertura del suolo',
+            'Uso del suolo'
+          ],
+        },
+      ],
+    }
+  },
   data() {
     return {
       topData: {

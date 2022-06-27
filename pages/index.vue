@@ -1,92 +1,94 @@
 <template>
-  <div class="container mt-4">
-    <div class="row">
-      <div class="col-md margin-top">
-        <h1 class="header-index mb-4">Land Cover & Land Use</h1>
-        <p class="snippet mb-4">
-          In questa applicazione Web è possibile trovare una sintesi
-          dello stato di fatto delle risorse in termini di Land Cover e Land Use
-          in Italia. L'obiettivo della applicazione è di fungere da "Hot
-          Spot" di aggregazione per le risorse di Uso e Copertura del suolo
-        </p>
-        <div class="center mb-4">
-          <NuxtLink to="progetto">
-            <div class="button btn">Leggi di più sul progetto</div>
+  <body>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md margin-top">
+          <h1 class="header-index mb-4">Land Cover & Land Use</h1>
+          <p class="snippet mb-4">
+            In questa applicazione Web è possibile trovare una sintesi dello
+            stato di fatto delle risorse in termini di Land Cover e Land Use in
+            Italia. L'obiettivo della applicazione è di fungere da "Hot Spot" di
+            aggregazione per le risorse di Uso e Copertura del suolo
+          </p>
+          <div class="center mb-4">
+            <NuxtLink to="progetto">
+              <div class="button btn">Leggi di più sul progetto</div>
+            </NuxtLink>
+          </div>
+        </div>
+        <div class="col-md center-div">
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+          <lottie-player
+            src="https://assets6.lottiefiles.com/packages/lf20_izy5ndvp.json"
+            background="transparent"
+            speed="1"
+            style="width: 600px; height: 650px"
+            loop
+            autoplay
+          ></lottie-player>
+        </div>
+      </div>
+      <div class="row mt-4 g-0">
+        <div :class="`image col-sm-7 p-2 active position-relative menu`">
+          <NuxtLink :to="`${sections.s1.path}`">
+            <img
+              :src="`${sections.s1.image}`"
+              class="card-image img-fluid"
+              :alt="`${sections.s1.name}-image`"
+            />
+            <div class="middle">
+              <h1>{{ sections.s1.name }}</h1>
+            </div>
+          </NuxtLink>
+        </div>
+
+        <div
+          :class="`image col-sm-${sections.s2.col} p-2 active position-relative menu`"
+        >
+          <NuxtLink :to="`${sections.s2.path}`">
+            <img
+              :src="`${sections.s2.image}`"
+              class="card-image img-fluid"
+              :alt="`${sections.s2.name}-image`"
+            />
+            <div class="middle">
+              <h1>{{ sections.s2.name }}</h1>
+            </div>
+          </NuxtLink>
+        </div>
+
+        <div
+          :class="`image col-sm-${sections.s3.col} p-2 active position-relative menu`"
+        >
+          <NuxtLink :to="`${sections.s3.path}`">
+            <img
+              :src="`${sections.s3.image}`"
+              class="card-image img-fluid"
+              :alt="`${sections.s3.name}-image`"
+            />
+            <div class="middle">
+              <h1>{{ sections.s3.name }}</h1>
+            </div>
+          </NuxtLink>
+        </div>
+
+        <div
+          :class="`image col-sm-${sections.s4.col} p-2 active position-relative menu`"
+        >
+          <NuxtLink :to="`${sections.s4.path}`">
+            <img
+              :src="`${sections.s4.image}`"
+              class="card-image img-fluid"
+              :alt="`${sections.s4.name}-image`"
+            />
+            <div class="middle">
+              <h1>{{ sections.s4.name }}</h1>
+            </div>
           </NuxtLink>
         </div>
       </div>
-      <div class="col-md center-div">
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        <lottie-player
-          src="https://assets6.lottiefiles.com/packages/lf20_izy5ndvp.json"
-          background="transparent"
-          speed="1"
-          style="width: 600px; height: 650px"
-          loop
-          autoplay
-        ></lottie-player>
-      </div>
     </div>
-    <div class="row mt-4 g-0">
-      <div :class="`image col-sm-7 p-2 active position-relative menu`">
-        <NuxtLink :to="`${sections.s1.path}`">
-          <img
-            :src="`${sections.s1.image}`"
-            class="card-image img-fluid"
-            :alt="`${sections.s1.name}-image`"
-          />
-          <div class="middle">
-            <h1>{{ sections.s1.name }}</h1>
-          </div>
-        </NuxtLink>
-      </div>
-
-      <div
-        :class="`image col-sm-${sections.s2.col} p-2 active position-relative menu`"
-      >
-        <NuxtLink :to="`${sections.s2.path}`">
-          <img
-            :src="`${sections.s2.image}`"
-            class="card-image img-fluid"
-            :alt="`${sections.s2.name}-image`"
-          />
-          <div class="middle">
-            <h1>{{ sections.s2.name }}</h1>
-          </div>
-        </NuxtLink>
-      </div>
-
-      <div
-        :class="`image col-sm-${sections.s3.col} p-2 active position-relative menu`"
-      >
-        <NuxtLink :to="`${sections.s3.path}`">
-          <img
-            :src="`${sections.s3.image}`"
-            class="card-image img-fluid"
-            :alt="`${sections.s3.name}-image`"
-          />
-          <div class="middle">
-            <h1>{{ sections.s3.name }}</h1>
-          </div>
-        </NuxtLink>
-      </div>
-
-      <div
-        :class="`image col-sm-${sections.s4.col} p-2 active position-relative menu`"
-      >
-        <NuxtLink :to="`${sections.s4.path}`">
-          <img
-            :src="`${sections.s4.image}`"
-            class="card-image img-fluid"
-            :alt="`${sections.s4.name}-image`"
-          />
-          <div class="middle">
-            <h1>{{ sections.s4.name }}</h1>
-          </div>
-        </NuxtLink>
-      </div>
-    </div>
-  </div>
+  </body>
 </template>
 
 <script>
@@ -106,24 +108,21 @@ export default {
         s2: {
           id: 1,
           name: 'Indici',
-          image:
-            'https://i.ibb.co/sqzXHVt/stats.webp',
+          image: 'https://i.ibb.co/sqzXHVt/stats.webp',
           col: 5,
           path: 'indici',
         },
         s3: {
           id: 2,
           name: 'Contatti',
-          image:
-            'https://i.ibb.co/r4BrpvB/contatti.webp',
+          image: 'https://i.ibb.co/r4BrpvB/contatti.webp',
           col: 5,
           path: 'contatti',
         },
         s4: {
           id: 3,
           name: 'Progetto',
-          image:
-            'https://i.ibb.co/KGQb7YC/project.webp',
+          image: 'https://i.ibb.co/KGQb7YC/project.webp',
           col: 7,
           path: 'progetto',
         },
@@ -170,7 +169,7 @@ export default {
 
 .header-index {
   font-weight: 900;
-  font-size: 5.5vw;
+  font-size: 5.3vw;
 }
 .center-div {
   display: flex;
@@ -266,4 +265,7 @@ export default {
 .button:hover {
   width: 25.5rem;
 }
+/* body{
+  zoom:100%
+} */
 </style>
