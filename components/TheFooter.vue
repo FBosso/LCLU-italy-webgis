@@ -52,7 +52,7 @@ certain order and do not act directly on the layout for future modifications*/
           <div class="col-xl space">
             <NuxtLink class="section" to="/risorse">Risorse</NuxtLink>
             <hr class="line" />
-            <NuxtLink class="section" to="/indici">Indici</NuxtLink>
+            <NuxtLink class="section" to="/statistiche">Statistiche</NuxtLink>
             <hr class="line" />
             <NuxtLink class="section" to="/progetto">Progetto</NuxtLink>
             <hr class="line" />
