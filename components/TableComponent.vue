@@ -16,7 +16,7 @@
           <td>{{ licenza }}</td>
         </tr>
         <tr>
-          <td class="attribute">Formato:</td>
+          <td class="attribute">Modello dati:</td>
           <td>{{ formato }}</td>
 
           <td class="attribute">Tema INSPIRE:</td>

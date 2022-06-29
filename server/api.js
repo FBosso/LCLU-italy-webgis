@@ -1,3 +1,6 @@
+import sequelize from 'sequelize'
+
+
 const express = require('express')
 const app = express()
 const { Sequelize, DataTypes, Op } = require('sequelize')
@@ -8,7 +11,7 @@ const { Client } = require('@elastic/elasticsearch');
 
 
 /* DEV */
-/* const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
+const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
 })
 
@@ -18,10 +21,10 @@ const client = new Client({
         username: 'elastic',
         password: 'UuraDFRJ6iedIEhgqNcaEdbb'
     }
-}); */
+});
 
 /* PROD */
-const pg = require('pg')
+/* const pg = require('pg')
 pg.defaults.ssl = true
 const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
@@ -35,7 +38,7 @@ const client = new Client({
         username: process.env.ELASTIC_USER,
         password: process.env.ELASTIC_PASSWORD
     }
-});
+}); */
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
@@ -54,9 +57,10 @@ app.use(cors({
 // Function that will initialize the connection to the database
 async function initializeDatabaseConnection() {
     await database.authenticate()
-    const Risorse = database.define("risorse", {
+    const Risorsa = database.define("risorsa", {
         nome: DataTypes.STRING,
         regione: DataTypes.STRING,
+        regId: DataTypes.INTEGER,
         licenza: DataTypes.STRING,
         descrizione: DataTypes.STRING(1234),
         wfs: DataTypes.STRING,
@@ -73,9 +77,17 @@ async function initializeDatabaseConnection() {
         formato: DataTypes.STRING,
         inspireTheme: DataTypes.STRING
     })
+    const Region = database.define("region", {
+        codReg: { type: DataTypes.INTEGER, primaryKey: true},
+        nome: DataTypes.STRING,
+        img: DataTypes.STRING
+    })
+    Region.hasMany(Risorsa, {foreignKey: 'codReg'})
+    Risorsa.belongsTo(Region, {foreignKey: 'regId'})
     await database.sync({ force: true })
     return {
-        Risorse
+        Risorsa,
+        Region
     }
 
 }
@@ -83,7 +95,7 @@ async function initializeDatabaseConnection() {
 
 
 
-
+/* funzione contenente tutte le API definite e che esegue la connsessione al DB */
 async function runMainApi() {
     const models = await initializeDatabaseConnection()
     await initialize(models)
@@ -105,7 +117,6 @@ async function runMainApi() {
                 }
             }, */
 
-
         }).then(function (resp) {
             console.log(req)
             console.log("Successful query! Here is the response:", resp);
@@ -117,16 +128,90 @@ async function runMainApi() {
     });
 
 
+    app.get('/ita', async (req, res) => {
+        let codici = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        let regioni = []
+        for (let i = 0; i < codici.length; i++) {
+            const element = codici[i];
+            const regione = {
+                term: {
+                    "cod_reg": {
+                        "value": element
+                    }
+                }
+            }
+            regioni.push(regione)
+            
+        }
+        const result = await client.search({
+            index: 'italiah',
+            size: 20,
+            query: {
+                bool: {
+                    should: regioni
+                }
+            }
+        })
+        let lista = []
+        for (let i = 0; i < result.hits.hits.length; i++) {
+            const element = result.hits.hits[i]._source.geometry;
+            const single = [element]
+            lista.push(single)
+        }
+        return res.json(lista)
+    });
+
+
+
+    /* app.get('/italia/:codici', async (req, res) => {
+        let codici = req.params.codici.split(',')
+        //let codici = [1,3,5]
+        let regioni = []
+        for (let i = 0; i < codici.length; i++) {
+            const element = codici[i];
+            const regione = {
+                term: {
+                    "cod_reg": {
+                        "value": element
+                    }
+                }
+            }
+            regioni.push(regione)
+            
+        }
+        const result = await client.search({
+            index: 'italias',
+            query: {
+                bool: {
+                    should: regioni
+                }
+            }
+        })
+        let lista = []
+        for (let i = 0; i < result.hits.hits.length; i++) {
+            const element = result.hits.hits[i]._source.geometry;
+            lista.push(element)
+        }
+
+        return res.json(lista)
+    }); */
+
+
+
     app.get("/risorse", async (req, res) => {
-        const result = await models.Risorse.findAll({
-            attributes: ['id', 'nome', 'regione', 'licenza', 'wms', 'wfs', 'arcgis', 'directDownload', 'metadataSite', 'metadataXml', 'descrizione']
+        const result = await models.Risorsa.findAll({
+            attributes: {exclude:['createdAt','updatedAt']},
+            include: [{
+                model: models.Region,
+                attributes: ['nome', 'img']
+            }]
         })
         return res.json(result)
     })
 
     app.get("/risorsa/:id", async (req, res) => {
         const id = +req.params.id
-        const result = await models.Risorse.findOne({
+        const result = await models.Risorsa.findOne({
             where: { id },
             attributes: { exclude: ['createdAt', 'updatedAt'] }
         })
@@ -244,7 +329,7 @@ async function runMainApi() {
             }
         };
 
-        const dati = await models.Risorse.findAll({
+        const dati = await models.Risorsa.findAll({
             where: {
                 regione: regioni,
                 formato: formati_risorse,
@@ -254,11 +339,40 @@ async function runMainApi() {
                 arcgis: arcgis_object,
                 directDownload: directDownload_object,
                 [Op.or]: [
-                    {metadataSite: metadataSite_object},
-                    {metadataXml: metadataXml_object}
+                    { metadataSite: metadataSite_object },
+                    { metadataXml: metadataXml_object }
                 ],
-
             }
+        })
+        return res.json(dati)
+    })
+
+
+    app.get('/shapes/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml', async (req, res) => {
+
+
+        let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTO", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
+            "EMILIA ROMAGNA", "TOSCANA", "UMBRIA", "MARCHE", "LAZIO", "ABRUZZO", "MOLISE", "CAMPANIA", "PUGLIA",
+            "BASILICATA", "CALABRIA", "SICILIA", "SARDEGNA"]
+
+       
+        const valuesRegione = req.params.valuesRegione.split(',')
+        valuesRegione.shift()
+        
+
+        if (valuesRegione.length > 0) {
+            regioni = valuesRegione
+        };
+       
+
+
+        const dati = await models.Risorsa.findAll({
+            where: {
+                regione: regioni,
+            },
+            attributes: ['regId', [sequelize.fn("COUNT", "1"), "CountedValue"]],
+            group: ["regId"],
+            order: [[sequelize.col("CountedValue"), "DESC"]]   
         })
         return res.json(dati)
     })

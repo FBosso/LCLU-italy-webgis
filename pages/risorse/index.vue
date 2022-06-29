@@ -8,13 +8,22 @@
       />
     </div>
     <div class="row mt-4">
-      <div class="col-lg-4">
+      <div class="col-lg-6 mt-2">
         <SideFilters />
+      </div>
+      <div class="col-lg-6">
+        <ItalyComponent class="mb-3" :regioni="regioni" :display="display" />
         <div class="note">
-          NOTE: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum incidunt repudiandae pariatur eveniet non autem iure quod eaque nisi nihil eos, consectetur, culpa, alias velit commodi sit quam vel facere.
+          NOTE: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+          incidunt repudiandae pariatur eveniet non autem iure quod eaque nisi
+          nihil eos, consectetur, culpa, alias velit commodi sit quam vel
+          facere.
         </div>
       </div>
-      <div class="col-lg-8" v-if="defaul != true">
+    </div>
+    <div class="row"></div>
+    <div class="row">
+      <div class="col" v-if="defaul != true">
         <ResourceCard
           v-for="res in refresh"
           :key="res.id"
@@ -30,7 +39,7 @@
           :regione="res.regione"
         />
       </div>
-      <div class="col-lg-8" v-if="defaul == true">
+      <div class="col" v-if="defaul == true">
         <ResourceCard
           v-for="res in risorse"
           :key="res.id"
@@ -44,9 +53,11 @@
           :descrizione="res.descrizione"
           :id="res.id"
           :regione="res.regione"
+          :img="res.region.img"
         />
       </div>
     </div>
+   
   </div>
 </template>
 
@@ -54,17 +65,23 @@
 export default {
   name: 'RisorsePage',
   async asyncData({ $axios }) {
+    /* ottenimento regioni GEOJSON */
+    let geojson = await $axios.get(`/api/ita`)
+    geojson = geojson.data
+    /* ottenimento risorse */
     const { data } = await $axios.get('/api/risorse')
-    console.log(data)
     let listaRisorse = []
     for (let index = 0; index < data.length; index++) {
       listaRisorse.push(data[index].nome)
     }
     return {
       risorse: data,
-      listaRisorse: listaRisorse
+      listaRisorse: listaRisorse,
+      
+      regioni:geojson
     }
   },
+  
   head() {
     return {
       title: 'Tutte le risorse | Risorse',
@@ -90,7 +107,7 @@ export default {
             'shapefile',
             'raster',
             'metdadati',
-            this.listaRisorse.toString()
+            this.listaRisorse.toString(),
           ],
         },
       ],
@@ -101,10 +118,12 @@ export default {
       topData: {
         name: 'Risorse',
         description:
-          'In questa sezione i dati geospaziali raccolti nei geoportali regionali possono essere consultati e filtrati a seconda delle esigenze dell\'utente. Una preview delle risorse con relativa descrizione e strumenti correlati viene mostrata',
+          "In questa sezione i dati geospaziali raccolti nei geoportali regionali possono essere consultati e filtrati a seconda delle esigenze dell'utente. Una preview delle risorse con relativa descrizione e strumenti correlati viene mostrata",
         tags: ['DatiGeospaziali', 'Regioni', 'LandCover', 'LandUse'],
       },
       defaul: true,
+      shapes: [],
+      display: []
     }
   },
   created() {
@@ -112,24 +131,34 @@ export default {
   },
   methods: {
     updateResources: async function (selected) {
-      console.log('ciao')
-      console.log(selected)
       let metadataSite = selected.metadataXml
-      console.log(metadataSite)
-      const data  = await this.$axios.$get(
+      const data = await this.$axios.$get(
         `/api/datiFiltrati/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${metadataSite}/${selected.metadataXml}`
       )
-      console.log(data)
+      this.shapes = await this.$axios.$get(
+        `/api/shapes/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${metadataSite}/${selected.metadataXml}`
+      )
+      this.obtainShapes()
       this.defaul = true
       this.defaul = false
       this.refresh = data
+      
     },
+    obtainShapes: async function (){
+      let codici = []
+      for (let i = 0; i < this.shapes.length; i++) {
+        const element = this.shapes[i];
+        const id = element.regId
+        codici.push(id)
+      }
+      this.display = codici
+    }
   },
 }
 </script>
 
 <style scoped>
-.note{
+.note {
   border: solid 2px black;
   border-radius: 10px;
   padding: 10px;

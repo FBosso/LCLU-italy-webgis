@@ -12,7 +12,7 @@
               <img
                 class="round-images"
                 height="170px"
-                src="https://i.ibb.co/gDwrBQp/friuli.webp"
+                :src="img"
                 alt="logo regione"
               />
             </figure>
@@ -53,28 +53,7 @@ export default {
   name: 'ResourceCardMod',
   data(){
     return{
-      regioni: {
-        abruzzo: "https://i.ibb.co/ZTF2Xp2/abruzzo.webp",
-        basilicata: "https://i.ibb.co/7p6y0YN/basilicata.webp",
-        calabria: "https://i.ibb.co/k1Dbtw3/calabria.webp",
-        campania: "https://i.ibb.co/3W0Ynww/campania.webp",
-        emiliaromagna: "https://i.ibb.co/Nsw22J0/emiliaromagna.webp",
-        friuli: "https://i.ibb.co/gDwrBQp/friuli.webp",
-        lazio: "https://i.ibb.co/ZTpvD4b/lazio.webp",
-        liguria: "https://i.ibb.co/r36BNtr/liguria.webp",
-        lombardia: "https://i.ibb.co/XVyRXg2/lombardia.webp",
-        marche: "https://i.ibb.co/5FZNHYM/marche.webp",
-        molise: "https://i.ibb.co/QPBQhJG/molise.webp",
-        piemonte: "https://i.ibb.co/FBMJGqf/piemonte.webp",
-        puglia: "https://i.ibb.co/yWnfFsY/puglia.webp",
-        sicilia: "https://i.ibb.co/dch38zP/sicilia.webp",
-        sardegna: "https://i.ibb.co/5RLMcw5/sardegna.webp",
-        toscana: "https://i.ibb.co/yBMQrDL/toscana.webp",
-        trento: "https://i.ibb.co/zsX2v3g/trento.webp",
-        umbria: "https://i.ibb.co/c8XCcdP/umbria.webp",
-        valleaosta: "https://i.ibb.co/XxF6Tzr/valleaosta.webp",
-        veneto: "https://i.ibb.co/0svykCW/veneto.webp"
-      }
+      
     }
   },
   props: {
@@ -115,6 +94,10 @@ export default {
       required: true,
     },
     regione: {
+      type: String,
+      required: true,
+    },
+    img: {
       type: String,
       required: true,
     },
