@@ -182,6 +182,9 @@ export default {
 .line{
   border: solid 1px white;
   background: white;
-  margin: 25px
+  
+}
+footer{
+  zoom:90%
 }
 </style>
