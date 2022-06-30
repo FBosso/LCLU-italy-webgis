@@ -128,7 +128,7 @@ async function runMainApi() {
     });
 
 
-    app.get('/ita', async (req, res) => {
+    /* app.get('/fake', async (req, res) => {
         let codici = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
         let regioni = []
         for (let i = 0; i < codici.length; i++) {
@@ -155,11 +155,60 @@ async function runMainApi() {
         let lista = []
         for (let i = 0; i < result.hits.hits.length; i++) {
             const element = result.hits.hits[i]._source.geometry;
+            //element.properties = { regId: result.hits.hits[i]._source.cod_reg}
+            //element.properties = { name: result.hits.hits[i]._source.cod_reg}
             const single = [element]
             lista.push(single)
         }
         return res.json(lista)
+    }); */
+
+
+    app.get('/ita', async (req, res) => {
+        let codici = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        let regioni = []
+        for (let i = 0; i < codici.length; i++) {
+            const element = codici[i];
+            const regione = {
+                term: {
+                    "cod_reg": {
+                        "value": element
+                    }
+                }
+            }
+            regioni.push(regione)
+            
+        }
+        const result = await client.search({
+            index: 'italiah',
+            size: 20,
+            query: {
+                bool: {
+                    should: regioni
+                }
+            }
+        })
+        let lista = []
+        for (let i = 0; i < result.hits.hits.length; i++) {
+            const element = result.hits.hits[i]._source;
+            const code = element.cod_reg
+            const name = element.den_reg
+            element.properties = {code, name}
+            let extracted_element = {}
+            extracted_element.type = 'Feature'
+            extracted_element.id = code
+            extracted_element.properties = {code, name}
+            extracted_element.geometry = element.geometry
+            const single = [extracted_element]
+            lista.push(single)
+        }
+        return res.json(lista)
     });
+
+
+
+
+
 
 
 

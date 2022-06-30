@@ -12,7 +12,7 @@
         <SideFilters />
       </div>
       <div class="col-lg-6">
-        <ItalyComponent class="mb-3" :regioni="regioni" :display="display" />
+        <ItalyComponent ref="italy" class="mb-3" :regioni="regioni" :display="display" :info="shapes" />
         <div class="note">
           NOTE: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
           incidunt repudiandae pariatur eveniet non autem iure quod eaque nisi
@@ -123,7 +123,7 @@ export default {
       },
       defaul: true,
       shapes: [],
-      display: []
+      display: [],
     }
   },
   created() {
@@ -138,10 +138,16 @@ export default {
       this.shapes = await this.$axios.$get(
         `/api/shapes/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${metadataSite}/${selected.metadataXml}`
       )
+
       this.obtainShapes()
+      
       this.defaul = true
       this.defaul = false
       this.refresh = data
+
+      //this.$refs.italy.assignProperties(this.shapes, this.regioni);
+
+      /* this.addProperties() */
       
     },
     obtainShapes: async function (){
@@ -152,7 +158,20 @@ export default {
         codici.push(id)
       }
       this.display = codici
-    }
+    },
+    /* addProperties: function (regioni){
+      regioni = 'ciao'
+      for (let i = 0; i < this.shapes.length; i++) {
+        const info = this.shapes[i];
+        for (let j = 0; j < regioni[0].length; j++) {
+          const reg = regioni[0][j];
+          if (j == (info.regId - 1)) {
+            reg.properties = info.CountedValue
+            console.log(reg)
+          }
+        }
+      }
+    } */
   },
 }
 </script>
