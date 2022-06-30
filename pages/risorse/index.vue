@@ -12,12 +12,24 @@
         <SideFilters />
       </div>
       <div class="col-lg-6">
-        <ItalyComponent ref="italy" class="mb-3" :regioni="regioni" :display="display" :info="shapes" />
+        <ItalyComponent
+          ref="italy"
+          class="mb-3"
+          :regioni="regioni"
+          :display="display"
+          :info="shapes"
+        />
         <div class="note">
-          NOTE: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-          incidunt repudiandae pariatur eveniet non autem iure quod eaque nisi
-          nihil eos, consectetur, culpa, alias velit commodi sit quam vel
-          facere.
+          NOTE: <b>(i)</b> Il <u>"Modello dati"</u> può essere specificato nel filtro.
+          Ciò nonostante la specifica di tale parametro non garantisce la
+          possibilità di scaricamento delle risorse trovate [Talvolta il Modello
+          dati è specificato nel geoportale di riferimento ma la possbilità di
+          download non viene fornita]. <b>(ii)</b> Usando lo <u>"switch" Metadati</u>
+          presente nella sezione filtri è possibile veicolare la ricerca nei
+          confronti di risorse delle quali sono forniti i metadati. In caso di
+          assenza di metadati in formato XML viene fornito un collegamento alla
+          pagina web del geoportale di riferimento dove i metadati vengono
+          mostrati a livello di pagina web.
         </div>
       </div>
     </div>
@@ -58,7 +70,6 @@
         />
       </div>
     </div>
-   
   </div>
 </template>
 
@@ -78,11 +89,11 @@ export default {
     return {
       risorse: data,
       listaRisorse: listaRisorse,
-      
-      regioni:geojson
+
+      regioni: geojson,
     }
   },
-  
+
   head() {
     return {
       title: 'Tutte le risorse | Risorse',
@@ -146,7 +157,7 @@ export default {
       ) */
 
       this.obtainShapes()
-      
+
       this.defaul = true
       this.defaul = false
       this.refresh = data
@@ -154,12 +165,11 @@ export default {
       //this.$refs.italy.assignProperties(this.shapes, this.regioni);
 
       /* this.addProperties() */
-      
     },
-    obtainShapes: async function (){
+    obtainShapes: async function () {
       let codici = []
       for (let i = 0; i < this.shapes.length; i++) {
-        const element = this.shapes[i];
+        const element = this.shapes[i]
         const id = element.regId
         codici.push(id)
       }

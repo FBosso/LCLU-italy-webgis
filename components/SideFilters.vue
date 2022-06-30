@@ -13,7 +13,7 @@
               multiple
             ></v-autocomplete>
           </v-col>
-          <v-col cols="12">
+          <v-col cols="12" class="mt-3">
             <v-autocomplete
               v-model="selected.valuesFormatoRisorsa"
               :items="items.itemsFormatoRisorsa"
@@ -23,7 +23,7 @@
               multiple
             ></v-autocomplete>
           </v-col>
-          <v-col cols="12">
+          <v-col cols="12" class="mt-3">
             <v-autocomplete
               v-model="selected.valuesLicenza"
               :items="items.itemsLicenza"
@@ -35,7 +35,7 @@
           </v-col>
           <v-container>
             <v-container>
-              <v-container class="switch">
+              <v-container class="switch mt-3">
                 <v-row>
                   <v-col cols="6">
                     <v-switch v-model="selected.wfs" :label="`WFS`"></v-switch>
@@ -59,7 +59,7 @@
               </v-container>
             </v-container>
           </v-container>
-          <v-container>
+          <v-container class="mt-3">
             <v-container>
               <v-container class="switch">
                 <v-row>
@@ -77,7 +77,7 @@
         <!-- <div @click="searchData" class="tool mt-4">Cerca</div> -->
         <div
           @click="$nuxt.$emit('change-resources', selected)"
-          class="tool mt-4"
+          class="tool mt-5"
         >
           Cerca
         </div>

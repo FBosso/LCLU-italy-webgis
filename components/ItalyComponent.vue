@@ -238,7 +238,7 @@ export default {
   data() {
     return {
       useUrlFunction: true,
-      zoom: 5.5,
+      zoom: 5.3,
       center: [parseFloat(1445412), parseFloat(42)],
       rotation: 0,
       //geolocPosition: undefined,
@@ -352,7 +352,7 @@ export default {
   color: white;
 }
 .map {
-  height: 455px;
+  height: 400px;
   margin-top: 10px;
   width: 100%;
 }

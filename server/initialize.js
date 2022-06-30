@@ -163,7 +163,7 @@ export default async (models) => {
             inspireTheme: "LAND COVER"
         },
         {
-            nome: "pluto",
+            nome: "pippo",
             regione: "CAMPANIA",
             regId: 15,
             licenza: "CC BY 2.5",
