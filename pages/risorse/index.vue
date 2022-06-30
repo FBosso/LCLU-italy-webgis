@@ -37,6 +37,7 @@
           :descrizione="res.descrizione"
           :id="res.id"
           :regione="res.regione"
+          :img="res.region.img"
         />
       </div>
       <div class="col" v-if="defaul == true">
@@ -132,12 +133,17 @@ export default {
   methods: {
     updateResources: async function (selected) {
       let metadataSite = selected.metadataXml
+      console.log(selected.valuesRegione)
       const data = await this.$axios.$get(
         `/api/datiFiltrati/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${metadataSite}/${selected.metadataXml}`
       )
       this.shapes = await this.$axios.$get(
         `/api/shapes/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${metadataSite}/${selected.metadataXml}`
       )
+
+      /* const caso = await this.$axios.$get(
+        `/api/caso/${selected.wfs}`
+      ) */
 
       this.obtainShapes()
       
