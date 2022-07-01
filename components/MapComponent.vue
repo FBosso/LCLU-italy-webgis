@@ -27,22 +27,22 @@
         <!-- DEVELOPMENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
 
-        <!-- <vl-layer-vector-tile v-if="elastic != ''">
+        <vl-layer-vector-tile v-if="elastic != ''">
           <vl-source-vector-tile
             :url="`http://localhost:3000/api/tiles/${elastic}/{z}/{x}/{y}`"
           >
           </vl-source-vector-tile>
-        </vl-layer-vector-tile> -->
+        </vl-layer-vector-tile>
 
 
         <!-- PRODUCTION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
 
-        <vl-layer-vector-tile>
+        <!-- <vl-layer-vector-tile>
           <vl-source-vector-tile
             :url="`https://lcluitalia.herokuapp.com/api/tiles/${elastic}/{z}/{x}/{y}`"
           ></vl-source-vector-tile>
-        </vl-layer-vector-tile>
+        </vl-layer-vector-tile> -->
 
 
         

@@ -20,11 +20,12 @@
           :info="shapes"
         />
         <div class="note">
-          NOTE: <b>(i)</b> Il <u>"Modello dati"</u> può essere specificato nel filtro.
-          Ciò nonostante la specifica di tale parametro non garantisce la
-          possibilità di scaricamento delle risorse trovate [Talvolta il Modello
-          dati è specificato nel geoportale di riferimento ma la possbilità di
-          download non viene fornita]. <b>(ii)</b> Usando lo <u>"switch" Metadati</u>
+          NOTE: <b>(i)</b> Il <u>"Modello dati"</u> può essere specificato nel
+          filtro. Ciò nonostante la specifica di tale parametro non garantisce
+          la possibilità di scaricamento delle risorse trovate [Talvolta il
+          Modello dati è specificato nel geoportale di riferimento ma la
+          possbilità di download non viene fornita]. <b>(ii)</b> Usando lo
+          <u>"switch" Metadati</u>
           presente nella sezione filtri è possibile veicolare la ricerca nei
           confronti di risorse delle quali sono forniti i metadati. In caso di
           assenza di metadati in formato XML viene fornito un collegamento alla
@@ -70,6 +71,11 @@
         />
       </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <PaginationComponent />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -82,12 +88,24 @@ export default {
     geojson = geojson.data
     /* ottenimento risorse */
     const { data } = await $axios.get('/api/risorse')
+    console.log(data)
+
+    /* ++++++++++++++++++++++++++++++++++++++++++ */
+
+    //const clusters = data.length/10
+    
+
+    /* ++++++++++++++++++++++++++++++++++++++++++ */
+
     let listaRisorse = []
     for (let index = 0; index < data.length; index++) {
       listaRisorse.push(data[index].nome)
     }
     return {
       risorse: data,
+     
+
+      /* per metadati pagina */
       listaRisorse: listaRisorse,
 
       regioni: geojson,

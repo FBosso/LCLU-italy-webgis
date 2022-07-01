@@ -120,3 +120,6 @@ a:link {
 .ol-unselectable{
   border-radius: 10px;
 }
+.v-application--wrap {
+  min-height: 0vh !important;
+}
