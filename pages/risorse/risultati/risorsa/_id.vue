@@ -1,12 +1,16 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      
-      <div class="col-3 tool-back"><NuxtLink to="/risorse">Torna alla sezione filtro</NuxtLink></div>
-    
-    
-      <div class="col-3 tool-back"><NuxtLink :to='`/risorse/risultati/${this.$store.state.page}`'>Torna ai risultati</NuxtLink></div>
-    
+      <div class="col-md-3 p-0">
+        <NuxtLink to="/risorse"
+          ><div class="tool-back">Torna alla sezione filtro</div></NuxtLink
+        >
+      </div>
+      <div class="col-md-3 p-0">
+        <NuxtLink :to="`/risorse/risultati/${this.$store.state.page}`"
+          ><div class="tool-back">Torna ai risultati</div></NuxtLink
+        >
+      </div>
     </div>
     <div class="row">
       <div class="col-xl order-xl-1 order-2">
@@ -152,7 +156,6 @@ export default {
 .tool-back {
   background: linear-gradient(
     90deg,
-    
     rgb(128, 60, 65) 20%,
     rgb(60, 128, 125) 50%,
     rgb(60, 99, 128) 100%
@@ -166,7 +169,7 @@ export default {
   color: white;
   text-decoration: none;
 }
-a{
+a {
   text-decoration: none;
   color: white;
 }
@@ -178,9 +181,4 @@ a{
 .tool-back:hover a {
   color: black;
 }
-
-
-
-
-
 </style>
