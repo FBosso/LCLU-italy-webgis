@@ -40,7 +40,7 @@
       </div>
     </div>
     <br />
-    <NuxtLink :to="`/risorse/${id}`">
+    <NuxtLink :to="`/risorse/risultati/risorsa/${id}`">
       <button class="btn btn-outline-secondary button-snippet-create">
         Accedi alla risorsa
       </button>

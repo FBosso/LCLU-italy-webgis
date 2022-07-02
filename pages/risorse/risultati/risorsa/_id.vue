@@ -1,6 +1,14 @@
 <template>
   <div class="container mt-5">
     <div class="row">
+      
+      <div class="col-3 tool-back"><NuxtLink to="/risorse">Torna alla sezione filtro</NuxtLink></div>
+    
+    
+      <div class="col-3 tool-back"><NuxtLink :to='`/risorse/risultati/${this.$store.state.page}`'>Torna ai risultati</NuxtLink></div>
+    
+    </div>
+    <div class="row">
       <div class="col-xl order-xl-1 order-2">
         <MapComponent
           :wms="wms"
@@ -141,4 +149,38 @@ export default {
 .justified {
   text-align: justify;
 }
+.tool-back {
+  background: linear-gradient(
+    90deg,
+    
+    rgb(128, 60, 65) 20%,
+    rgb(60, 128, 125) 50%,
+    rgb(60, 99, 128) 100%
+  );
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  border: solid 2px white;
+  transition: 0.2s linear;
+  color: white;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+.tool-back:hover {
+  border: solid 2px black;
+  background: transparent;
+  color: black;
+}
+.tool-back:hover a {
+  color: black;
+}
+
+
+
+
+
 </style>

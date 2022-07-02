@@ -1,5 +1,6 @@
 <template>
   <div class="container mt-5">
+    
     <div class="row mb-3">
       <TopPageGeneric
         :name="topData.name"
@@ -54,13 +55,18 @@
       sull'asse delle "y" l'indice di <u>accessibilità del dato</u> che possono
       assumere valori compresi tra 0 (minimo) ed 1 (massimo):
     </div>
-    <div class="center">
+    <div class="link-chart">
+      <a href="https://fbosso.github.io/Bubbles_Regions">
+        <div class="link-chart">Mostra il grafico</div>
+      </a>
+    </div>
+    <div class="center cont">
       <figure>
         <iframe
           src="https://fbosso.github.io/Bubbles_Regions"
-          width="950px"
-          height="750px"
           class="mt-5"
+          width="1100px"
+          height="800px"
         >
           <p>prova</p>
         </iframe>
@@ -77,16 +83,21 @@
       necessità simili sotto il punto di vista di miglioramento dei parametri
       considerati. Questo approccio, adottato nuovamente quando il campione dei
       dati analizzati aumenterà anche per quelle regioni che, ad ora, sono state
-      analizzate con un numero limitato di dati, consentirà di pianificare delle strategie
-      rafforzative aderenti alle esigenze di ciascun cluster.
+      analizzate con un numero limitato di dati, consentirà di pianificare delle
+      strategie rafforzative aderenti alle esigenze di ciascun cluster.
     </div>
-    <div class="center">
+    <div class="link-chart">
+      <a href="https://fbosso.github.io/Bubbles_Regions_clusters">
+        <div class="link-chart">Mostra il grafico</div>
+      </a>
+    </div>
+    <div class="center cont">
       <figure>
         <iframe
           src="https://fbosso.github.io/Bubbles_Regions_clusters"
-          width="950px"
-          height="750px"
           class="mt-5"
+          width="1100px"
+          height="800px"
         >
           <p>prova</p>
         </iframe>
@@ -164,5 +175,20 @@ iframe {
 .caption {
   color: grey;
   text-align: center;
+}
+.link-chart {
+  display: none;
+}
+
+@media screen and (max-width: 1263px) {
+  .cont {
+    display: none;
+  }
+  .link-chart {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: rgb(70, 70, 222);
+  }
 }
 </style>

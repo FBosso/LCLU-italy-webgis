@@ -102,7 +102,7 @@ a {
 .header {
   background: rgb(60, 128, 125);
 }
-nav{
+/* nav{
   zoom: 90%
-}
+} */
 </style>

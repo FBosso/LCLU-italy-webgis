@@ -29,7 +29,7 @@ certain order and do not act directly on the layout for future modifications*/
               <span class="subtitle-footer">Codice persona:</span> 10555965
               <br />
               <hr class="line">
-              <span class="subtitle-footer">Tutor Accademico:</span> Prof. Maria Brovelli
+              <span class="subtitle-footer">Tutor Accademico:</span> Prof.ssa Maria Brovelli
               <br />
               <span class="subtitle-footer">Tutors Ministero:</span> Dott. Tomellini Renzo
               <br />
@@ -121,7 +121,7 @@ export default {
   text-decoration: none;
   color: rgb(255, 255, 255);
   font-size: 1.2em;
-  font-weight: 100;
+  font-weight: 400;
   transition: 0.2s ease;
   padding: 5px;
   border-radius: 10px;
@@ -184,7 +184,7 @@ export default {
   background: white;
   
 }
-footer{
+/* footer{
   zoom:90%
-}
+} */
 </style>

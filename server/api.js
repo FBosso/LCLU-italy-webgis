@@ -261,7 +261,7 @@ async function runMainApi() {
     })
 
 
-    app.get('/datiFiltrati/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml', async (req, res) => {
+    app.get('/datiFiltrati/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml/:page', async (req, res) => {
 
 
         let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTO", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
@@ -370,6 +370,145 @@ async function runMainApi() {
                 [Op.notIn]: ['array', 'casuale']
             }
         };
+
+        let page = req.params.page
+
+        const dati = await models.Risorsa.findAll({
+            limit: 10,
+            offset: 10 * (page - 1),
+            where: {
+                regione: regioni,
+                formato: formati_risorse,
+                licenza: licenze,
+                wfs: wfs_object,
+                wms: wms_object,
+                arcgis: arcgis_object,
+                directDownload: directDownload_object,
+                [Op.or]: [
+                    { metadataSite: metadataSite_object },
+                    { metadataXml: metadataXml_object }
+                ],
+            },
+            attributes: {exclude:['createdAt','updatedAt']},
+            include: [{
+                model: models.Region,
+                attributes: ['nome', 'img']
+            }]
+        })
+        return res.json(dati)
+    })
+
+
+    app.get('/generatePages/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml', async (req, res) => {
+
+
+        let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTO", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
+            "EMILIA ROMAGNA", "TOSCANA", "UMBRIA", "MARCHE", "LAZIO", "ABRUZZO", "MOLISE", "CAMPANIA", "PUGLIA",
+            "BASILICATA", "CALABRIA", "SICILIA", "SARDEGNA"]
+
+        let formati_risorse = ["Vettoriale", "Raster"]
+
+        let licenze = ['CC BY 3.0', 'CC BY 2.5', 'CC BY-NC-ND 3.0', 'CC BY', 'http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1e',
+            'IODL 2.0', 'uso concesso con obbligo di cita', 'CC BY-NC-SA 3.0 Italia', 'CC BY 4.0 Italia', 'CC BY 4.0', 'CC BY 4.0 ', 'CC BY-SA 4.0', 'uso con citazione',
+            'CC BY 2.5 Italia', 'https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations', 'CC BY 3.0 Italia', 'legge n. 633 del 22 aprile 1941',
+            'CC0 1.0', "L'accesso e la fruibilità al dato sono pubblici", 'http://www.umbriageo.regione.umbria.it/pagine/informazioni-001', 'no limitations', 'CC BY 3.0 IT']
+
+        let wfs_bool = true
+        let wms_bool = true
+        let arcgis_bool = true
+        let directDownload_bool = true
+        let metadataSite_bool = true
+        let metadataXml_bool = true
+
+        const valuesRegione = req.params.valuesRegione.split(',')
+        valuesRegione.shift()
+        const valuesFormatoRisorsa = req.params.valuesFormatoRisorsa.split(',')
+        valuesFormatoRisorsa.shift()
+        const valuesLicenza = req.params.valuesLicenza.split(',')
+        valuesLicenza.shift()
+        const wfs = (req.params.wfs == 'true')
+        const wms = (req.params.wms == 'true')
+        const arcgis = (req.params.arcgis == 'true')
+        const directDownload = (req.params.directDownload == 'true')
+        const metadataSite = (req.params.metadataSite == 'true')
+        const metadataXml = (req.params.metadataXml == 'true')
+
+
+        if (valuesRegione.length > 0) {
+            regioni = valuesRegione
+        };
+        if (valuesFormatoRisorsa.length > 0) {
+            formati_risorse = valuesFormatoRisorsa
+        };
+        if (valuesLicenza.length > 0) {
+            licenze = valuesLicenza
+        };
+
+        let wfs_object
+        let wms_object
+        let arcgis_object
+        let directDownload_object
+        let metadataSite_object
+        let metadataXml_object
+
+
+        if (wfs_bool == wfs) {
+            wfs_object = {
+                [Op.ne]: ''
+            }
+        } else {
+            wfs_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
+        };
+        if (wms_bool == wms) {
+            wms_object = {
+                [Op.ne]: ''
+            }
+        } else {
+            wms_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
+        };
+        if (arcgis_bool == arcgis) {
+            arcgis_object = {
+                [Op.ne]: ''
+            }
+        } else {
+            arcgis_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
+        };
+
+        if (directDownload_bool == directDownload) {
+            directDownload_object = {
+                [Op.ne]: ''
+            }
+        } else {
+            directDownload_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
+        };
+
+        if (metadataSite_bool == metadataSite) {
+            metadataSite_object = {
+                [Op.ne]: ''
+            }
+        } else {
+            metadataSite_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
+        };
+        if (metadataXml_bool == metadataXml) {
+            metadataXml_object = {
+                [Op.ne]: ''
+            }
+        } else {
+            metadataXml_object = {
+                [Op.notIn]: ['array', 'casuale']
+            }
+        };
+
 
         const dati = await models.Risorsa.findAll({
             where: {

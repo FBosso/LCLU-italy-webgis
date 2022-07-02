@@ -8,7 +8,7 @@
       />
       <div class="row mt-5">
         <div class="col-xxl-3">
-          <div class="mb-2">
+          <div class="">
             <div class="col-xxl-3 center">
               <img
                 class="foto"
@@ -101,7 +101,7 @@ export default {
 <style scoped>
 .foto {
   border-radius: 10px;
-  height: 370px;
+  height: 410px;
 }
 .general-contact {
   font-size: 20px;

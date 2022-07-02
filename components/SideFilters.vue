@@ -76,7 +76,10 @@
         </v-row>
         <!-- <div @click="searchData" class="tool mt-4">Cerca</div> -->
         <div
-          @click="$nuxt.$emit('change-resources', selected)"
+          @click="
+            $nuxt.$emit('change-resources', selected)
+            modifyStoreParams()
+          "
           class="tool mt-5"
         >
           Cerca
@@ -144,6 +147,20 @@ export default {
       },
 
       /* items scelti */
+      selectedInit: {
+        valuesRegione: [' '],
+        valuesFormatoRisorsa: [' '],
+        valuesLicenza: [' '],
+
+        wfs: false,
+        wms: false,
+        arcgis: false,
+        directDownload: false,
+
+        metadataSite: false,
+        metadataXml: false,
+      },
+
       selected: {
         valuesRegione: [' '],
         valuesFormatoRisorsa: [' '],
@@ -172,23 +189,16 @@ export default {
       ], */
     }
   },
-  /* methods: {
-    searchData: function () {
-      this.$emit('change-resources', this.valuesRegione)
-        this.$emit('change-resources',[
-        this.valuesRegione,
-        this.valuesFormatoRisorsa,
-        this.valuesLicenza,
-        this.wfs,
-        this.wms,
-        this.arcgis,
-        this.directDownload,
-        this.metadataSite,
-        this.metadataXml,
-      ]);
-      console.log('fatto')
+  methods: {
+    modifyStoreParams: function () {
+      console.log('prima di funzione store')
+      /* let selInit = this.selectedInit
+      this.$store.commit('setSearchParams', selInit) */
+      let sel = this.selected
+      this.$store.commit('setSearchParams', sel)
+      console.log('dopo funzione store')
     },
-  }, */
+  },
 }
 </script>
 

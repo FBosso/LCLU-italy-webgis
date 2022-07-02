@@ -224,9 +224,9 @@
       <div v-if="selectedFeatures.length">
         <b>{{ selectedFeatures.map((f) => obtainProps(f)) }} </b> <br />
       </div>
-      Zoom: {{ zoom }}<br />
-      Center: {{ center }} <br />
-      Rotation: {{ rotation }}<br />
+      Zoom: {{ Math.round(zoom) }}<br />
+      Center: {{ Math.round(center[0]) }}, {{ Math.round(center[1]) }} <br />
+      Rotation: {{ Math.round(rotation) }}<br />
     </div>
     <!-- </client-only> -->
   </div>

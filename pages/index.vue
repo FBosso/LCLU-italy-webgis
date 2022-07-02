@@ -1,6 +1,6 @@
 <template>
-  <body>
     <div class="container mt-4">
+      
       <div class="row">
         <div class="col-md margin-top">
           <h1 class="header-index mb-4">Land Cover & Land Use</h1>
@@ -88,7 +88,6 @@
         </div>
       </div>
     </div>
-  </body>
 </template>
 
 <script>
@@ -245,11 +244,38 @@ export default {
   border-radius: 100rem;
   background-color: rgb(128, 60, 65);
   color: white;
-  width: 24rem;
+  width: 21rem;
   font-weight: 600;
   transition: 0.5s;
 }
 .button:hover {
-  width: 25.5rem;
+  width: 24rem;
 }
+.card-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+.image {
+  padding: 8px;
+}
+.img-fluid {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
 </style>

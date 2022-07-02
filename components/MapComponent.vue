@@ -34,7 +34,6 @@
           </vl-source-vector-tile>
         </vl-layer-vector-tile>
 
-
         <!-- PRODUCTION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
 
@@ -43,16 +42,13 @@
             :url="`https://lcluitalia.herokuapp.com/api/tiles/${elastic}/{z}/{x}/{y}`"
           ></vl-source-vector-tile>
         </vl-layer-vector-tile> -->
-
-
-        
       </vl-map>
     </div>
 
     <div class="square" style="padding: 20px">
-      Zoom: {{ zoom }}<br />
-      Center: {{ center }} <br />
-      Rotation: {{ rotation }}<br />
+      Zoom: {{ Math.round(zoom) }}<br />
+      Center: {{ Math.round(center[0]) }}, {{ Math.round(center[0]) }} <br />
+      Rotation: {{ Math.round(rotation) }}<br />
     </div>
     <!-- </client-only> -->
   </div>
@@ -71,17 +67,17 @@ export default {
       reloading: false,
       opacity: 0.7,
       features: [
-      	{
-        	type: 'Feature',
+        {
+          type: 'Feature',
           geometry: {
-	          type: 'Point',
+            type: 'Point',
             coordinates: [10, 10],
           },
         },
         {
-        	type: 'Feature',
+          type: 'Feature',
           geometry: {
-	          type: 'Point',
+            type: 'Point',
             coordinates: [-10, -10],
           },
         },
@@ -112,8 +108,8 @@ export default {
     },
   },
   methods: {
-    toggleCond ({ map, pixel }) {
-			return map.forEachFeatureAtPixel(pixel, feature => !!feature)
+    toggleCond({ map, pixel }) {
+      return map.forEachFeatureAtPixel(pixel, (feature) => !!feature)
     },
     changeMap() {
       this.useUrlFunction = !this.useUrlFunction
