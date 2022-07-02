@@ -188,15 +188,8 @@ export default {
     margin-top: 0;
   }
 }
-.image {
-  padding: 8px;
-  height: 400px;
-}
-.img-fluid {
-  -webkit-transition: 0.5s ease;
-  -moz-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
+
+
 .menu {
   padding-bottom: 6px;
   padding-top: 6px;
@@ -221,6 +214,16 @@ export default {
   color: rgba(0, 0, 0, 0.866);
 }
 
+.img-fluid {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  display: block;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
 @media screen and (max-width: 992px) {
   .middle {
     color: rgba(0, 0, 0, 0.866);
@@ -231,13 +234,15 @@ export default {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
+    
   }
   .img-fluid {
-    opacity: 0.4;
+    opacity: 0.3;
   }
   .center {
     text-align: center;
   }
+  
 }
 .button {
   padding: 1rem 4rem;
@@ -258,15 +263,19 @@ export default {
   object-position: center;
   border-radius: 10px;
 }
-.image {
-  padding: 8px;
-}
-.img-fluid {
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-  display: block;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

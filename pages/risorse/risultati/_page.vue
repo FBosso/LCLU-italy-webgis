@@ -7,9 +7,11 @@
         :tags="topData.tags"
       />
     </div>
-    <NuxtLink to="/risorse">
-      <div class="col-3 mb-4 tool-back">Torna alla sezione filtro</div>
-    </NuxtLink>
+    <div class="col-md-3 p-0">
+      <NuxtLink to="/risorse"
+        ><div class="tool-back">Torna alla sezione filtro</div></NuxtLink
+      >
+    </div>
     <div class="row">
       <div class="col">
         <ResourceCard
