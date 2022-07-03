@@ -58,20 +58,19 @@ app.use(cors({
 async function initializeDatabaseConnection() {
     await database.authenticate()
     const Risorsa = database.define("risorsa", {
-        nome: DataTypes.STRING,
+        nome: DataTypes.STRING(1234),
         regione: DataTypes.STRING,
         regId: DataTypes.INTEGER,
         licenza: DataTypes.STRING,
-        descrizione: DataTypes.STRING(1234),
-        wfs: DataTypes.STRING,
-        wms: DataTypes.STRING,
+        descrizione: DataTypes.STRING(1500),
+        wfs: DataTypes.STRING(1500),
+        wms: DataTypes.STRING(1500),
         wmsLayers: DataTypes.STRING,
-        arcgis: DataTypes.STRING,
-        directDownload: DataTypes.STRING,
-        metadataSite: DataTypes.STRING,
-        metadataXml: DataTypes.STRING,
+        arcgis: DataTypes.STRING(1500),
+        directDownload: DataTypes.STRING(1500),
+        metadataSite: DataTypes.STRING(1500),
+        metadataXml: DataTypes.STRING(1500),
         elastic: DataTypes.STRING,
-        nomeRisorsa: DataTypes.STRING,
         xc: DataTypes.STRING,
         yc: DataTypes.STRING,
         formato: DataTypes.STRING,
@@ -180,7 +179,7 @@ async function runMainApi() {
             
         }
         const result = await client.search({
-            index: 'italiah',
+            index: 'italiaoh',
             size: 20,
             query: {
                 bool: {

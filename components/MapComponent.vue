@@ -46,7 +46,7 @@
 
     <div class="square" style="padding: 20px">
       Zoom: {{ Math.round(zoom) }}<br />
-      Center: {{ Math.round(center[0]) }}, {{ Math.round(center[0]) }} <br />
+      Center: {{ Math.round(center[0]) }}, {{ Math.round(center[1]) }} <br />
       Rotation: {{ Math.round(rotation) }}<br />
     </div>
     <!-- </client-only> -->
