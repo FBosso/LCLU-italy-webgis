@@ -26,6 +26,7 @@
     </div>
     <div class="row m-3">
       <div class="col tools">Strumenti correlati:</div>
+      <div class="row center-just p-0">
       <div v-if="wfs != ''" class="col-lg-2 item center">WFS</div>
       <div v-if="wms != ''" class="col-lg-2 item center">WMS</div>
       <div v-if="arcgis != ''" class="col-lg-2 item center">ArcGIS SERVER</div>
@@ -37,6 +38,7 @@
       </div>
       <div v-if="metadataXml != ''" class="col-lg-2 item center">
         Metadati XML
+      </div>
       </div>
     </div>
     <br />

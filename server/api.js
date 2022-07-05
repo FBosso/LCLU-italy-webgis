@@ -11,20 +11,32 @@ const { Client } = require('@elastic/elasticsearch');
 
 
 /* DEV */
-/* const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
+const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
 })
 
+// POLI
 const client = new Client({
     node: 'https://geoinformatics-project-07e882.es.us-central1.gcp.cloud.es.io',
     auth: {
         username: 'elastic',
         password: 'UuraDFRJ6iedIEhgqNcaEdbb'
     }
+});
+
+//9742
+
+/* const client = new Client({
+    node: 'https://geoinformatics-project.es.europe-west1.gcp.cloud.es.io',
+    auth: {
+        username: 'elastic',
+        password: 'pJlCrFE2EMb2y9Dj1AF77ZkU'
+    }
 }); */
 
+
 /* PROD */
-const pg = require('pg')
+/* const pg = require('pg')
 pg.defaults.ssl = true
 const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
@@ -38,7 +50,7 @@ const client = new Client({
         username: process.env.ELASTIC_USER,
         password: process.env.ELASTIC_PASSWORD
     }
-});
+}); */
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
@@ -107,7 +119,7 @@ async function runMainApi() {
             index: req.params.resource,
             field: 'geometry',
             //exact_bounds: true,
-            //extent: 10000,
+            //extent: 100,
             //grid_agg: "geotile",
             //grid_agg: "geohex",
             /* query:{
@@ -263,7 +275,7 @@ async function runMainApi() {
     app.get('/datiFiltrati/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml/:page', async (req, res) => {
 
 
-        let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTO", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
+        let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTINO ALTO ADIGE", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
             "EMILIA ROMAGNA", "TOSCANA", "UMBRIA", "MARCHE", "LAZIO", "ABRUZZO", "MOLISE", "CAMPANIA", "PUGLIA",
             "BASILICATA", "CALABRIA", "SICILIA", "SARDEGNA"]
 
@@ -401,7 +413,7 @@ async function runMainApi() {
     app.get('/generatePages/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml', async (req, res) => {
 
 
-        let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTO", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
+        let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTINO ALTO ADIGE", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
             "EMILIA ROMAGNA", "TOSCANA", "UMBRIA", "MARCHE", "LAZIO", "ABRUZZO", "MOLISE", "CAMPANIA", "PUGLIA",
             "BASILICATA", "CALABRIA", "SICILIA", "SARDEGNA"]
 
@@ -536,7 +548,7 @@ async function runMainApi() {
     app.get('/shapes/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml', async (req, res) => {
 
 
-        let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTO", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
+        let regioni = ["PIEMONTE", "VALLE D'AOSTA", "LOMBARDIA", "TRENTINO ALTO ADIGE", "VENETO", "FRIULI VENEZIA GIULIA", "LIGURIA",
             "EMILIA ROMAGNA", "TOSCANA", "UMBRIA", "MARCHE", "LAZIO", "ABRUZZO", "MOLISE", "CAMPANIA", "PUGLIA",
             "BASILICATA", "CALABRIA", "SICILIA", "SARDEGNA"]
 

@@ -29,7 +29,7 @@ certain order and do not act directly on the layout for future modifications*/
               <span class="subtitle-footer">Codice persona:</span> 10555965
               <br />
               <hr class="line">
-              <span class="subtitle-footer">Tutor Accademico:</span> Prof.ssa Maria Brovelli
+              <span class="subtitle-footer">Tutor Accademico:</span> Prof.ssa Brovelli Maria 
               <br />
               <span class="subtitle-footer">Tutors Ministero:</span> Dott. Tomellini Renzo
               <br />

@@ -240,7 +240,7 @@ export default {
           'PIEMONTE',
           "VALLE D'AOSTA",
           'LOMBARDIA',
-          'TRENTO',
+          'TRENTINO ALTO ADIGE',
           'VENETO',
           'FRIULI VENEZIA GIULIA',
           'LIGURIA',
