@@ -90,15 +90,19 @@
                   </v-container>
                 </v-container>
               </v-row>
-              <div
-                @click="
-                  modifyStoreParams()
-                  updateResources()
-                "
-                class="tool mt-5"
-              >
-                Cerca
-              </div>
+              <v-row>
+                <button>
+                  <div
+                    @click="
+                      modifyStoreParams()
+                      updateResources()
+                    "
+                    class="tool mt-3 mb-4"
+                  >
+                    Cerca
+                  </div>
+                </button>
+              </v-row>
             </v-container>
           </v-card>
         </v-app>
@@ -126,11 +130,13 @@
           pagina web del geoportale di riferimento dove i metadati vengono
           mostrati a livello di pagina web.
         </div>
-        <div class="row button" >
-          <NuxtLink v-if="searched && display.length > 0"
-              class="mt-4 tool-visualizza" to="/risorse/risultati/1">
-          Visualizza risultati
-            
+        <div class="row button">
+          <NuxtLink
+            v-if="searched && display.length > 0"
+            class="mt-4 tool-visualizza"
+            to="/risorse/risultati/1"
+          >
+            Visualizza risultati
           </NuxtLink>
           <div
             v-if="searched && display.length == 0"
