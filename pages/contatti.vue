@@ -12,7 +12,7 @@
             <div class="col-xxl-3 center">
               <img
                 class="foto"
-                src="https://i.ibb.co/gPymmCX/me.webp"
+                src="https://i.ibb.co/xFXswzP/io-resized.webp"
                 alt="Francesco Bosso"
               />
             </div>

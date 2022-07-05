@@ -14,13 +14,15 @@
     </div>
     <div class="row">
       <div class="col-xl order-xl-1 order-2">
-        <MapComponent
-          :wms="wms"
-          :wmsLayers="wmsLayers"
-          :elastic="elastic"
-          :xc="xc"
-          :yc="yc"
-        />
+        <client-only>
+          <MapComponent
+            :wms="wms"
+            :wmsLayers="wmsLayers"
+            :elastic="elastic"
+            :xc="xc"
+            :yc="yc"
+          />
+        </client-only>
       </div>
       <div class="col-xl order-xl-2 order-1">
         <div class="row">

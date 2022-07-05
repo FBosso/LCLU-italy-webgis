@@ -9,116 +9,110 @@
     </div>
     <div class="row mt-4">
       <div class="col-lg-6 mt-2">
-        
-
-
-
-
-
-
-   <v-app>
-            <v-card class="snippet-filters">
-              <v-container fluid>
-                <v-row align="center">
-                  <v-col cols="12" class="mt-4">
-                    <v-autocomplete
-                      v-model="selected.valuesRegione"
-                      :items="items.itemsRegione"
-                      chips
-                      deletable-chips
-                      label="Regione"
-                      multiple
-                    ></v-autocomplete>
-                  </v-col>
-                  <v-col cols="12" class="mt-4 mb-4">
-                    <v-autocomplete
-                      v-model="selected.valuesFormatoRisorsa"
-                      :items="items.itemsFormatoRisorsa"
-                      chips
-                      deletable-chips
-                      label="Modello dati"
-                      multiple
-                    ></v-autocomplete>
-                  </v-col>
-                  <v-col cols="12" class="mt-4 mb-4">
-                    <v-autocomplete
-                      v-model="selected.valuesLicenza"
-                      :items="items.itemsLicenza"
-                      chips
-                      deletable-chips
-                      label="Licenza"
-                      multiple
-                    ></v-autocomplete>
-                  </v-col>
+        <v-app>
+          <v-card class="snippet-filters">
+            <v-container fluid>
+              <v-row align="center">
+                <v-col cols="12" class="mt-4">
+                  <v-autocomplete
+                    v-model="selected.valuesRegione"
+                    :items="items.itemsRegione"
+                    chips
+                    deletable-chips
+                    label="Regione"
+                    multiple
+                  ></v-autocomplete>
+                </v-col>
+                <v-col cols="12" class="mt-4 mb-4">
+                  <v-autocomplete
+                    v-model="selected.valuesFormatoRisorsa"
+                    :items="items.itemsFormatoRisorsa"
+                    chips
+                    deletable-chips
+                    label="Modello dati"
+                    multiple
+                  ></v-autocomplete>
+                </v-col>
+                <v-col cols="12" class="mt-4 mb-4">
+                  <v-autocomplete
+                    v-model="selected.valuesLicenza"
+                    :items="items.itemsLicenza"
+                    chips
+                    deletable-chips
+                    label="Licenza"
+                    multiple
+                  ></v-autocomplete>
+                </v-col>
+                <v-container>
                   <v-container>
-                    <v-container>
-                      <v-container class="switch">
-                        <v-row>
-                          <v-col cols="6-md">
-                            <v-switch
-                              v-model="selected.wfs"
-                              :label="`WFS`"
-                            ></v-switch>
-                          </v-col>
-                          <v-col cols="6-md">
-                            <v-switch
-                              v-model="selected.wms"
-                              :label="`WMS`"
-                            ></v-switch>
-                          </v-col>
-                          <v-col cols="6-md">
-                            <v-switch
-                              v-model="selected.arcgis"
-                              :label="`ArcGIS SERVER`"
-                            ></v-switch>
-                          </v-col>
-                          <v-col cols="6-md">
-                            <v-switch
-                              v-model="selected.directDownload"
-                              :label="`Download`"
-                            ></v-switch>
-                          </v-col>
-                        </v-row>
-                      </v-container>
+                    <v-container class="switch">
+                      <v-row>
+                        <v-col cols="6-md">
+                          <v-switch
+                            v-model="selected.wfs"
+                            :label="`WFS`"
+                          ></v-switch>
+                        </v-col>
+                        <v-col cols="6-md">
+                          <v-switch
+                            v-model="selected.wms"
+                            :label="`WMS`"
+                          ></v-switch>
+                        </v-col>
+                        <v-col cols="6-md">
+                          <v-switch
+                            v-model="selected.arcgis"
+                            :label="`ArcGIS SERVER`"
+                          ></v-switch>
+                        </v-col>
+                        <v-col cols="6-md">
+                          <v-switch
+                            v-model="selected.directDownload"
+                            :label="`Download`"
+                          ></v-switch>
+                        </v-col>
+                      </v-row>
                     </v-container>
                   </v-container>
-                  <v-container class="mt-4 mb-3">
-                    <v-container>
-                      <v-container class="switch">
-                        <v-row>
-                          <v-col cols="6">
-                            <v-switch
-                              v-model="selected.metadataXml"
-                              :label="`Metadati`"
-                            ></v-switch>
-                          </v-col>
-                        </v-row>
-                      </v-container>
+                </v-container>
+                <v-container class="mt-4 mb-3">
+                  <v-container>
+                    <v-container class="switch">
+                      <v-row>
+                        <v-col cols="6">
+                          <v-switch
+                            v-model="selected.metadataXml"
+                            :label="`Metadati`"
+                          ></v-switch>
+                        </v-col>
+                      </v-row>
                     </v-container>
                   </v-container>
-                </v-row>
-                <div
-                  @click="
-                    modifyStoreParams()
-                    updateResources()
-                  "
-                  class="tool mt-5"
-                >
-                  Cerca
-                </div>
-              </v-container>
-            </v-card>
-          </v-app>
-
+                </v-container>
+              </v-row>
+              <div
+                @click="
+                  modifyStoreParams()
+                  updateResources()
+                "
+                class="tool mt-5"
+              >
+                Cerca
+              </div>
+            </v-container>
+          </v-card>
+        </v-app>
       </div>
       <div class="col-lg-6">
-        <ItalyComponent
-          ref="italy"
-          class="mb-3"
-          :regioni="regioni"
-          :display="display"
-          :info="shapes"
-        />
+        <client-only>
+          <ItalyComponent
+            ref="italy"
+            class="mb-3"
+            :regioni="regioni"
+            :display="display"
+            :info="shapes"
+          />
+        </client-only>
         <div class="note">
           NOTE: <b>(i)</b> Il <u>"Modello dati"</u> può essere specificato nel
           filtro. Ciò nonostante la specifica di tale parametro non garantisce
@@ -132,31 +126,25 @@
           pagina web del geoportale di riferimento dove i metadati vengono
           mostrati a livello di pagina web.
         </div>
-        <div class="button">
-            <NuxtLink to="/risorse/risultati/1">
-              <div
-                v-if="searched && display.length > 0"
-                class="mt-4 tool-visualizza"
-              >
-                Visualizza risultati
-              </div>
-            </NuxtLink>
-            <div
-              v-if="searched && display.length == 0"
-              class="mt-4 tool-nessun-risultato"
-            >
-              Nessun Risultato trovato
-            </div>
+        <div class="row button" >
+          <NuxtLink v-if="searched && display.length > 0"
+              class="mt-4 tool-visualizza" to="/risorse/risultati/1">
+          Visualizza risultati
+            
+          </NuxtLink>
+          <div
+            v-if="searched && display.length == 0"
+            class="mt-4 tool-nessun-risultato"
+          >
+            Nessun Risultato trovato
           </div>
+        </div>
       </div>
     </div>
-    
   </div>
 </template>
 
 <script>
-
-
 export default {
   name: 'RisorsePage',
   async asyncData({ $axios }) {
@@ -170,7 +158,7 @@ export default {
     /* ++++++++++++++++++++++++++++++++++++++++++ */
 
     //const clusters = data.length/10
-    
+
     /* ++++++++++++++++++++++++++++++++++++++++++ */
 
     let listaRisorse = []
@@ -179,7 +167,6 @@ export default {
     }
     return {
       risorse: data,
-     
 
       /* per metadati pagina */
       listaRisorse: listaRisorse,
@@ -315,10 +302,9 @@ export default {
       },
 
       /* --------------------- */
-
     }
   },
-  
+
   methods: {
     modifyStoreParams: function () {
       console.log('prima di funzione store')
@@ -396,10 +382,6 @@ export default {
   transition: 0.25s linear;
   color: black;
 }
-
-
-
-
 
 .side {
   border: solid 2px black;

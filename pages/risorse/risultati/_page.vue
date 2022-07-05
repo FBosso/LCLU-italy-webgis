@@ -41,7 +41,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'ListPage',
@@ -59,18 +58,17 @@ export default {
       listaRisorse: listaRisorse,
     }
   },
-  /* METADATA DA CAMBIARE ++++++++++++++++++++++++++++++++++ */
   head() {
     return {
-      title: 'Tutte le risorse | Risorse',
+      title: `Pagina ${this.$store.state.page} | Risorse`,
       meta: [
         {
-          hid: 'descriptionTutteRisorse',
+          hid: 'descriptionPaginaRisorse',
           name: 'description',
-          content: `Tutte le risorse e le informazioni ad esse correlate. Possibilità di porre filtri di ricerca per le risorse interesate e possibiltà di accesso alle ringole risorse`,
+          content: `Nella presente pagina sono disponibili le seguenti risorse: ${this.listaRisorse.toString()}. Si può accedere a ciascuna risorsa per poter usufruire degli strumenti correlati`,
         },
         {
-          hid: 'keywordsTutteRisorse',
+          hid: 'keywordsPaginaRisorse',
           name: 'keywords',
           content: [
             'Risorse',
@@ -91,13 +89,12 @@ export default {
       ],
     }
   },
-  /* METADATA DA CAMBIARE ++++++++++++++++++++++++++++++++++ */
   data() {
     return {
       topData: {
         name: 'Risultati',
         description:
-          'In questa sezione i dati risultanti dalla ricerca effettuata possono essere consultati. Una preview delle risorse con relativa descrizione e strumenti correlati viene mostrata',
+          'In questa sezione i dati risultanti dalla ricerca effettuata sono suddivisi in pagine e possono essere consultati. Una preview delle risorse con relativa descrizione e strumenti correlati viene mostrata',
         tags: ['DatiGeospaziali', 'Regioni', 'LandCover', 'LandUse'],
       },
       defaul: true,
