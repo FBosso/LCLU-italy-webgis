@@ -46,12 +46,12 @@ export const mutations = {
 
 
 
-    inc: (state) => {
+   /*  inc: (state) => {
         state.counter = state.counter+1
     },
     setNumber: (state, {number}) => {
         state.counter = number
     }
-
+ */
 }
 
