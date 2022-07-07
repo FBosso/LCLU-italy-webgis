@@ -1,10 +1,9 @@
-/* ############################## START COMPONENT DESCRIPTION ############################## */
+/* ############################## INIZIO DESCRIZIONE COMPONENT ############################## */
 
-/* this component is used to create the navbar of the website. Even if this component is only 
-used in the default.vue layout we decided to implement it separately in order to maintain a 
-certain order and do not act directly on the layout for future modifications*/
-    
-/* ############################## END COMPONENT DESCRIPTION ############################### */
+questa component implementa l'header che viene inserito all'interno del default layout 
+(la barra di navigazione).
+
+/* ############################## FINE DESCRIZIONE COMPONENT ############################### */
 <template>
 
   <nav class="navbar navbar-expand-xl navbar-light px-3 header">

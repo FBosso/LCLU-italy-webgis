@@ -1,3 +1,14 @@
+/* ############################## INIZIO DESCRIZIONE COMPONENT ############################## */
+
+questa component implementa i pulsanti animati che consentono di accedete ai tools correlati alla 
+singola risorsa  all'url "/risorse/risultati/risorsa/_id" (nonchè all'interno del file "_id.vue" 
+nella cartella "risorsa"). Vengono passate 2 props:
+
+  - name: per eseguire il display del tool correlato alla risorsa
+  
+  - link: per consentire al tasto di reindirizzare ai tools disponibili
+
+/* ############################## FINE DESCRIZIONE COMPONENT ############################### */
 <template>
   <a v-if="link != ''" :href="link">
     <div class="tool">
@@ -15,11 +26,8 @@
 export default {
   name: 'ToolComponent',
   props: {
-    // eslint-disable-next-line vue/require-default-prop
     name: {
       type: String,
-      /* the name is not always required since in th individual event page the 
-      title is displayed directly on the page with a different style */
       required: true,
     },
     link: {

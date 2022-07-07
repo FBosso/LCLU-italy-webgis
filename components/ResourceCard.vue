@@ -1,3 +1,22 @@
+/* ############################## INIZIO DESCRIZIONE COMPONENT ############################## */
+
+questa component implementa la "card" per il display di ciascuna risorsa presente nella pagina all'url "risorse/risultati/_page"
+(nonchè all'interno del file "_page.vue" nella cartella "risultati"). Vengono passate 11 props:
+
+  - id: per consentire di costruire il routing che reindirizzi alla specifica risorsa alla quale si vuole accedere
+
+  - wfs, wms, arcgis, directDownload, metadataSite, metadataXml: per capirne la presenza/assenza in modo da fornire, 
+    all'interno della card, una preview degli strumenti correlati alla risorsa
+
+  - nome: per eseguire il display del nome della risorsa
+
+  - descrizione: per eseguire il display della descrizione della risorsa
+
+  - regione: per capire a quale regione appartiene la risorsa
+
+  - img: per eseguire il display del logo della regione alla quale la risorsa è riferita
+
+/* ############################## FINE DESCRIZIONE COMPONENT ############################### */
 <template>
   <div class="single-resource">
     <div class="row p-2">
@@ -27,21 +46,28 @@
     <div class="row m-3">
       <div class="col tools">Strumenti correlati:</div>
       <div class="row center-just p-0">
-      <div v-if="wfs != ''" class="col-lg-2 item center">WFS</div>
-      <div v-if="wms != ''" class="col-lg-2 item center">WMS</div>
-      <div v-if="arcgis != ''" class="col-lg-2 item center">ArcGIS SERVER</div>
-      <div v-if="directDownload != ''" class="col-lg-2 item center">
-        Download
-      </div>
-      <div v-if="metadataSite != ''" class="col-lg-2 item center">
-        Metadati Sito
-      </div>
-      <div v-if="metadataXml != ''" class="col-lg-2 item center">
-        Metadati XML
-      </div>
+        <!-- grazie ai v-if è possibile mostrare gli strumenti correlati solo se 
+        effettivamente presenti per la risorsa considerata -->
+        <div v-if="wfs != ''" class="col-lg-2 item center">WFS</div>
+        <div v-if="wms != ''" class="col-lg-2 item center">WMS</div>
+        <div v-if="arcgis != ''" class="col-lg-2 item center">
+          ArcGIS SERVER
+        </div>
+        <div v-if="directDownload != ''" class="col-lg-2 item center">
+          Download
+        </div>
+        <div v-if="metadataSite != ''" class="col-lg-2 item center">
+          Metadati Sito
+        </div>
+        <div v-if="metadataXml != ''" class="col-lg-2 item center">
+          Metadati XML
+        </div>
       </div>
     </div>
     <br />
+    <!-- Grazie alla presenza dell'ID è possibile costruire dinamicamente l'URL al 
+    quale il tasto "accedi alla risorsa" punta in modo da consentire il 
+    reindirizzamento alla risorsa esatta -->
     <NuxtLink :to="`/risorse/risultati/risorsa/${id}`">
       <button class="btn btn-outline-secondary button-snippet-create">
         Accedi alla risorsa
@@ -53,11 +79,6 @@
 <script>
 export default {
   name: 'ResourceCardMod',
-  data(){
-    return{
-      
-    }
-  },
   props: {
     id: {
       type: Number,

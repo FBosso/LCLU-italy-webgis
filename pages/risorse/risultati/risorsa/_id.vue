@@ -26,7 +26,9 @@
       </div>
       <div class="col-xl order-xl-2 order-1">
         <div class="row">
-          <TitleDescription :name="nome" :description="descrizione" />
+          <div>
+            <h1 class="header">{{ nome }}</h1>
+          </div>
         </div>
         <div class="row">
           <TableComponent

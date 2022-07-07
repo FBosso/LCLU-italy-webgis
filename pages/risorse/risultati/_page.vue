@@ -102,9 +102,9 @@ export default {
       display: [],
     }
   },
-  created() {
+  /* created() {
     this.$nuxt.$on('change-resources', ($event) => this.updateResources($event))
-  },
+  }, */
 }
 </script>
 

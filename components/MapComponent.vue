@@ -1,6 +1,23 @@
+/* ############################## INIZIO DESCRIZIONE COMPONENT ############################## */
+
+questa component genera la "slippy map" presente all'interno della pagina all'URL "/risorse/risultati/risorsa/_id" 
+(nonchè all'interno del file "_id.vue" nella cartella "risorsa"). Vengono passate 4 props:
+
+  - wms: il link della wms request in caso non sia possibile eseguire il display della risorsa con elasticsearch 
+    (per via del fatto che lo shapefile non può essere reperito e quindi caricato su elasticsearch)
+
+  - wmsLayers: quali layers estrarre dalla wms request specificata nella proprs precedente
+  
+  - elastic: nome dell'elasticsearch index della risorsa di cui si vuole eseguire il display usando 
+    l'Elasticsearch vector tile search API
+
+  - xc: coordinata x di inizializzazione della mappa
+
+  - yc: coordinata y di inizializzazione della mappa
+    
+/* ############################## FINE DESCRIZIONE COMPONENT ############################### */
 <template>
   <div class="container">
-    <!-- <client-only> -->
     <div class="map">
       <vl-map
         v-if="!reloading"
@@ -24,22 +41,29 @@
           <vl-source-wms :url="wms" :layers="wmsLayers"></vl-source-wms>
         </vl-layer-tile>
 
-        <!-- DEVELOPMENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- ======================== START SWITCH DEV - PROD ================================== -->
+
+        <!-- DEVELOPMENT ++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
 
+        <!-- con questo url viene usato un API definito in "server/api.js" che si collega 
+        ad Elasticsearch e consente l'impiego dell'Elasticsearch vector tile search API -->
         <vl-layer-vector-tile v-if="elastic != ''">
           <vl-source-vector-tile
             :url="`http://localhost:3000/api/tiles/${elastic}/{z}/{x}/{y}`">
           </vl-source-vector-tile>
         </vl-layer-vector-tile>
 
-        <!-- PRODUCTION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- PRODUCTION +++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <!-- VECTOR RESOURCES -->
         <!-- <vl-layer-vector-tile>
           <vl-source-vector-tile
             :url="`https://lcluitalia.herokuapp.com/api/tiles/${elastic}/{z}/{x}/{y}`"
           ></vl-source-vector-tile>
         </vl-layer-vector-tile> -->
+
+        <!-- ======================== END SWITCH DEV - PROD =================================== -->
+
       </vl-map>
     </div>
 
@@ -48,7 +72,6 @@
       Center: {{ Math.round(center[0]) }}, {{ Math.round(center[1]) }} <br />
       Rotation: {{ Math.round(rotation) }}<br />
     </div>
-    <!-- </client-only> -->
   </div>
 </template>
 
@@ -58,28 +81,11 @@ export default {
   data() {
     return {
       useUrlFunction: true,
-      zoom: 7,
+      zoom: 6,
       center: [parseFloat(this.xc), parseFloat(this.yc)],
       rotation: 0,
-      //geolocPosition: undefined,
       reloading: false,
       opacity: 0.7,
-      features: [
-        {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [10, 10],
-          },
-        },
-        {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-10, -10],
-          },
-        },
-      ],
       selectedFeatures: [],
     }
   },
@@ -103,40 +109,6 @@ export default {
     yc: {
       type: String,
       required: false,
-    },
-  },
-  methods: {
-    toggleCond({ map, pixel }) {
-      return map.forEachFeatureAtPixel(pixel, (feature) => !!feature)
-    },
-    changeMap() {
-      this.useUrlFunction = !this.useUrlFunction
-      this.reloading = true
-      this.$nextTick(() => {
-        this.reloading = false
-      })
-    },
-    urlFunction(extent, resolution, projection) {
-      return (
-        'https://ahocevar.com/geoserver/wfs?service=WFS&' +
-        'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
-        'outputFormat=application/json&srsname=' +
-        projection +
-        '&maxFeatures=50' +
-        '&' +
-        'bbox=' +
-        extent.join(',') +
-        ',' +
-        projection
-      )
-    },
-    loadingStrategyFactory() {
-      return this.$loadingBBox()
-    },
-    createMvtFormat() {
-      return new MVT({
-        featureClass: Feature,
-      })
     },
   },
 }

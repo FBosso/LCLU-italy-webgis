@@ -1,10 +1,8 @@
-/* ############################## START COMPONENT DESCRIPTION ############################## */
+/* ############################## INIZIO DESCRIZIONE COMPONENT ############################## */
 
-/* this component is used to create the footer of the website. Even if this component is only 
-used in the default.vue layout we decided to implement it separately in order to maintain a 
-certain order and do not act directly on the layout for future modifications*/
-    
-/* ############################## END COMPONENT DESCRIPTION ############################### */
+questa component implementa il footer che viene inserito all'interno del default layout 
+
+/* ############################## FINE DESCRIZIONE COMPONENT ############################### */
 <template>
   <!-- this footer is composed by 4 main columns -->
   <div class="footer">
@@ -62,27 +60,27 @@ certain order and do not act directly on the layout for future modifications*/
           <div class="col-xl space">
             <div class="row">
               <div class="social col">
-                <a href="https://www.facebook.com"
+                <a href="https://www.mite.gov.it/"
                   ><img
                     class="icons"
-                    src="https://i.ibb.co/PYKHqfs/facebook.webp"
-                    alt="facebook_icon"
+                    src="https://i.ibb.co/HG6ThtZ/mite.webp"
+                    alt="MiTE_icon"
                 /></a>
               </div>
               <div class="social col">
+                <a href="https://www.isprambiente.gov.it/it"
+                  ><img
+                    class="icons"
+                    src="https://i.ibb.co/yNtLbzf/ispra.webp"
+                    alt="ISPRA_icon"
+                /></a>
+              </div>
+               <div class="social col">
                 <a href="https://www.linkedin.com/in/francesco-bosso-614814130/"
                   ><img
                     class="icons"
                     src="https://i.ibb.co/6tSw7GQ/linkedin.webp"
                     alt="linkedin_icon"
-                /></a>
-              </div>
-              <div class="social col">
-                <a href="https://www.twitter.com"
-                  ><img
-                    class="icons"
-                    src="https://i.ibb.co/6WyDyMg/twitter.webp"
-                    alt="twitter_icon"
                 /></a>
               </div>
               <div class="social col">

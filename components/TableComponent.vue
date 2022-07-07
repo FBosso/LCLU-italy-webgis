@@ -1,3 +1,15 @@
+/* ############################## INIZIO DESCRIZIONE COMPONENT ############################## */
+
+questa component implementa la tabella all'interno della pagina che esegue il display della singola 
+risorsa all'url "/risorse/risultati/risorsa/_id" (nonchè all'interno del file "_page.vue" nella 
+cartella "risultati"). Vengono passate 4 props che corrispondono alle informazioni mostrate nella tabella:
+
+  - regione
+  - licenza
+  - formato
+  - inspireTheme
+
+/* ############################## FINE DESCRIZIONE COMPONENT ############################### */
 <template>
   <div>
     <table class="table">
@@ -51,7 +63,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .title {
   font-size: 1.5em;
 }

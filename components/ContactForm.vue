@@ -1,16 +1,11 @@
-/* ############################## START COMPONENT DESCRIPTION ############################## */
+/* ############################## INIZIO DESCRIZIONE COMPONENT ############################## */
 
-/* this component will produce the form inserted in the contact-us.vue page (it represents one
-of the possible way in wich the user can reach us). No parameters are needed to be passed. 
+questa component genera il form inserito nella pagina contatti (rappresenta uno dei possibili 
+modi per raggiungere l'autore del presente progetto). Nessun parametro viene pasato
     
-/* ############################## END COMPONENT DESCRIPTION ############################### */
+/* ############################## FINE DESCRIZIONE COMPONENT ############################### */
 <template>
     <div class="container frame">
-      <!-- This comment is only for dev and would be removed if code is public
-      Form sends post to formSpree to be parsed and forwarded to locusgroup@libero.it, names are required to parse the form
-      user: locusgroup
-      psw: locusGroup+2022 
-      NOTE: On paid plan the redirect can be costumized a different page-->
       <form action="https://formspree.io/f/xlezkdnn" method="POST">
         <div class="row">
           <div class="col-md-4 mb-3">

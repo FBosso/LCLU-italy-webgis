@@ -1,7 +1,19 @@
+/* ############################## INIZIO DESCRIZIONE COMPONENT ############################## */
 
+questa component genera la "slippy map" presente all'interno della pagina all'URL "/risorse" 
+(nonchè all'interno del file "index.vue" nella cartella "risorse"). Vengono passate 3 props:
+
+  - regioni: Per ottenere i layers delle regioni in formato geoJSON (che verranno accesi qualora, 
+    in seguito ad una ricerca, dovessero essere trovati dei riscontri)
+
+  - display: Per capire per quali regioni, in seguito alla ricerca, sono stati trovati dei riscontri
+
+  - info: Per capire quanti riscontri sono stati trovati per ciascuna regione ed eseguire il display 
+    di questa informazione al click della regione sulla mappa
+    
+/* ############################## FINE DESCRIZIONE COMPONENT ############################### */
 <template>
   <div class="">
-    <!-- <client-only> -->
     <div class="map">
       <vl-map
         v-if="!reloading"
@@ -33,12 +45,6 @@
           ref="featuresLayer"
         >
           <vl-source-vector :features="regioni[0]"></vl-source-vector>
-          <!-- <vl-style-box>
-            <vl-style-fill color="#59c7df"></vl-style-fill>
-          </vl-style-box>
-          <vl-style-box>
-            <vl-style-stroke color="black"></vl-style-stroke>
-          </vl-style-box> -->
         </vl-layer-vector>
 
         <vl-layer-vector
@@ -216,19 +222,19 @@
         ></vl-interaction-select>
       </vl-map>
     </div>
-
     <div class="square" style="padding: 20px">
       <div v-if="!selectedFeatures.length">
         <b>Seleziona una regione sulla mappa</b>
       </div>
       <div v-if="selectedFeatures.length">
+        <!-- al click della regione viene chiamata la funzione obtainProps() e 
+        viene passato come parametro la feature selezionata -->
         <b>{{ selectedFeatures.map((f) => obtainProps(f)) }} </b> <br />
       </div>
       Zoom: {{ Math.round(zoom) }}<br />
       Center: {{ Math.round(center[0]) }}, {{ Math.round(center[1]) }} <br />
       Rotation: {{ Math.round(rotation) }}<br />
     </div>
-    <!-- </client-only> -->
   </div>
 </template>
 
@@ -241,49 +247,13 @@ export default {
       zoom: 5.3,
       center: [parseFloat(1445412), parseFloat(42)],
       rotation: 0,
-      //geolocPosition: undefined,
       reloading: false,
       opacity: 0.7,
       selectedFeatures: [],
       region: this.regioni,
-      lig: 7,
-      prova: [
-        {
-          type: 'Feature',
-          id: 7,
-          properties: {
-            address: 'a caso',
-            boh: 'non so',
-          },
-          geometry: {
-            type: 'Point',
-            coordinates: [0, 0],
-          },
-        },
-      ],
     }
   },
   props: {
-    wms: {
-      type: String,
-      required: false,
-    },
-    wmsLayers: {
-      type: String,
-      required: false,
-    },
-    elastic: {
-      type: String,
-      required: false,
-    },
-    xc: {
-      type: String,
-      required: false,
-    },
-    yc: {
-      type: String,
-      required: false,
-    },
     regioni: {
       type: Array,
       required: false,
@@ -298,6 +268,9 @@ export default {
     },
   },
   methods: {
+    /* questo metodo estrae l'informazione di quati riscontri 
+    sono stati trovati per la regione selezionata e ne consente 
+    il display nell'apposito riquadro posto sotto la mappa */
     obtainProps(feature) {
       for (let i = 0; i < this.info.length; i++) {
         const element = this.info[i]
@@ -307,38 +280,6 @@ export default {
           )} `
         }
       }
-    },
-    toggleCond({ map, pixel }) {
-      return map.forEachFeatureAtPixel(pixel, (feature) => !!feature)
-    },
-    changeMap() {
-      this.useUrlFunction = !this.useUrlFunction
-      this.reloading = true
-      this.$nextTick(() => {
-        this.reloading = false
-      })
-    },
-    urlFunction(extent, resolution, projection) {
-      return (
-        'https://ahocevar.com/geoserver/wfs?service=WFS&' +
-        'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
-        'outputFormat=application/json&srsname=' +
-        projection +
-        '&maxFeatures=50' +
-        '&' +
-        'bbox=' +
-        extent.join(',') +
-        ',' +
-        projection
-      )
-    },
-    loadingStrategyFactory() {
-      return this.$loadingBBox()
-    },
-    createMvtFormat() {
-      return new MVT({
-        featureClass: Feature,
-      })
     },
   },
 }
