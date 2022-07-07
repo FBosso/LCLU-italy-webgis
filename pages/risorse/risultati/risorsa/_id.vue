@@ -62,39 +62,8 @@
 <script>
 export default {
   name: 'SingleResourcePage',
-  head() {
-    return {
-      title: `${this.nome} | Risorse`,
-      meta: [
-        {
-          hid: 'descriptionSingolaRisorsa',
-          name: 'description',
-          content: `specifica risorsa (${this.nome}) ed informazioni ad essa correlate. Mappa per la visualizzazione online del dato e possibiltà di accesso diretto agli strumenti correlati quali download, metadati, wfs, wms, ecc.`,
-        },
-        {
-          hid: 'keywordsSingolaRisorsa',
-          name: 'keywords',
-          content: [
-            'Risorsa',
-            'Land Cover',
-            'Land Use',
-            'Copertura del suolo',
-            'Uso del suolo',
-            'wfs',
-            'wms',
-            'arcgis',
-            'download',
-            'shapefile',
-            'raster',
-            'metdadati',
-            this.nome,
-            this.regione,
-            this.inspireTheme,
-          ],
-        },
-      ],
-    }
-  },
+  /* sfruttando i parametri dell URL viene generata una chiamata API 
+  che consente di ottenre la risorsa interessata */
   async asyncData({ route, $axios }) {
     const { id } = route.params
     const { data } = await $axios.get(`/api/risorsa/${id}`)
@@ -148,6 +117,40 @@ export default {
           link: data.metadataXml,
         },
       },
+    }
+  },
+  /* grazie a questo metodo vengono dinamicamente specificati i metadati della pagina */
+  head() {
+    return {
+      title: `${this.nome} | Risorse`,
+      meta: [
+        {
+          hid: 'descriptionSingolaRisorsa',
+          name: 'description',
+          content: `specifica risorsa (${this.nome}) ed informazioni ad essa correlate. Mappa per la visualizzazione online del dato e possibiltà di accesso diretto agli strumenti correlati quali download, metadati, wfs, wms, ecc.`,
+        },
+        {
+          hid: 'keywordsSingolaRisorsa',
+          name: 'keywords',
+          content: [
+            'Risorsa',
+            'Land Cover',
+            'Land Use',
+            'Copertura del suolo',
+            'Uso del suolo',
+            'wfs',
+            'wms',
+            'arcgis',
+            'download',
+            'shapefile',
+            'raster',
+            'metdadati',
+            this.nome,
+            this.regione,
+            this.inspireTheme,
+          ],
+        },
+      ],
     }
   },
 }

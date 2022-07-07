@@ -44,11 +44,15 @@
 <script>
 export default {
   name: 'ListPage',
+  /* sfruttando i parametri dell URL e lo store viene generata una chiamata API 
+  che consente di ottenre il gruppo di risorse interessato per la formazione della pagina */
   async asyncData({ route, $axios, store }) {
     const { page } = route.params
     const { data } = await $axios.get(
       `/api/datiFiltrati/${store.state.selected.valuesRegione}/${store.state.selected.valuesFormatoRisorsa}/${store.state.selected.valuesLicenza}/${store.state.selected.wfs}/${store.state.selected.wms}/${store.state.selected.arcgis}/${store.state.selected.directDownload}/${store.state.selected.metadataXml}/${store.state.selected.metadataXml}/${store.state.page}`
     )
+    /* con questo ciclo for si crea un array contenente tutte le risorse presenti 
+    nella pagina considerata in modo da porre tutti i nomi all'interno dei metadati della pagina */
     let listaRisorse = []
     for (let index = 0; index < data.length; index++) {
       listaRisorse.push(data[index].nome)
@@ -58,6 +62,7 @@ export default {
       listaRisorse: listaRisorse,
     }
   },
+  /* grazie a questo metodo vengono dinamicamente specificati i metadati della pagina */
   head() {
     return {
       title: `Pagina ${this.$store.state.page} | Risorse`,
@@ -89,6 +94,7 @@ export default {
       ],
     }
   },
+  /* questi dati sono statici, dunque vengono inseriti all'interno del codice e non nel DB */
   data() {
     return {
       topData: {

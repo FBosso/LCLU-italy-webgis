@@ -128,6 +128,7 @@
 <script>
 export default {
   name: 'IndiciPage',
+  /* grazie a questo metodo vengono specificati i metadati della pagina */
   head() {
     return {
       title: 'LC LU Italia | Statistiche',
@@ -156,6 +157,7 @@ export default {
       ],
     }
   },
+  /* questi dati sono statici, dunque vengono inseriti all'interno del codice e non nel DB */
   data() {
     return {
       topData: {

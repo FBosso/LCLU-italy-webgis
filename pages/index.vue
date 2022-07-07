@@ -1,100 +1,127 @@
 <template>
-    <div class="container mt-4">
-      
-      <div class="row">
-        <div class="col-md margin-top">
-          <h1 class="header-index mb-4">Land Cover & Land Use</h1>
-          <p class="snippet mb-4">
-            In questa applicazione Web è possibile trovare una sintesi dello
-            stato di fatto delle risorse in termini di Land Cover e Land Use in
-            Italia. L'obiettivo della applicazione è di fungere da "Hot Spot" di
-            aggregazione per le risorse di Uso e Copertura del suolo
-          </p>
-          <div class="center mb-4">
-            <NuxtLink to="progetto">
-              <div class="button btn">Leggi di più sul progetto</div>
-            </NuxtLink>
-          </div>
-        </div>
-        <div class="col-md center-div">
-          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-          <lottie-player
-            src="https://assets6.lottiefiles.com/packages/lf20_izy5ndvp.json"
-            background="transparent"
-            speed="1"
-            style="width: 600px; height: 650px"
-            loop
-            autoplay
-          ></lottie-player>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md margin-top">
+        <h1 class="header-index mb-4">Land Cover & Land Use</h1>
+        <p class="snippet mb-4">
+          In questa applicazione Web è possibile trovare una sintesi dello stato
+          di fatto delle risorse in termini di Land Cover e Land Use in Italia.
+          L'obiettivo della applicazione è di fungere da "Hot Spot" di
+          aggregazione per le risorse di Uso e Copertura del suolo
+        </p>
+        <div class="center mb-4">
+          <NuxtLink to="progetto">
+            <div class="button btn">Leggi di più sul progetto</div>
+          </NuxtLink>
         </div>
       </div>
-      <div class="row mt-4 g-0">
-        <div :class="`image col-sm-7 p-2 active position-relative menu`">
-          <NuxtLink :to="`${sections.s1.path}`">
-            <img
-              :src="`${sections.s1.image}`"
-              class="card-image img-fluid"
-              :alt="`${sections.s1.name}-image`"
-            />
-            <div class="middle">
-              <h1>{{ sections.s1.name }}</h1>
-            </div>
-          </NuxtLink>
-        </div>
-
-        <div
-          :class="`image col-sm-${sections.s2.col} p-2 active position-relative menu`"
-        >
-          <NuxtLink :to="`${sections.s2.path}`">
-            <img
-              :src="`${sections.s2.image}`"
-              class="card-image img-fluid"
-              :alt="`${sections.s2.name}-image`"
-            />
-            <div class="middle">
-              <h1>{{ sections.s2.name }}</h1>
-            </div>
-          </NuxtLink>
-        </div>
-
-        <div
-          :class="`image col-sm-${sections.s3.col} p-2 active position-relative menu`"
-        >
-          <NuxtLink :to="`${sections.s3.path}`">
-            <img
-              :src="`${sections.s3.image}`"
-              class="card-image img-fluid"
-              :alt="`${sections.s3.name}-image`"
-            />
-            <div class="middle">
-              <h1>{{ sections.s3.name }}</h1>
-            </div>
-          </NuxtLink>
-        </div>
-
-        <div
-          :class="`image col-sm-${sections.s4.col} p-2 active position-relative menu`"
-        >
-          <NuxtLink :to="`${sections.s4.path}`">
-            <img
-              :src="`${sections.s4.image}`"
-              class="card-image img-fluid"
-              :alt="`${sections.s4.name}-image`"
-            />
-            <div class="middle">
-              <h1>{{ sections.s4.name }}</h1>
-            </div>
-          </NuxtLink>
-        </div>
+      <div class="col-md center-div">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player
+          src="https://assets6.lottiefiles.com/packages/lf20_izy5ndvp.json"
+          background="transparent"
+          speed="1"
+          style="width: 600px; height: 650px"
+          loop
+          autoplay
+        ></lottie-player>
       </div>
     </div>
+    <div class="row mt-4 g-0">
+      <div :class="`image col-sm-7 p-2 active position-relative menu`">
+        <NuxtLink :to="`${sections.s1.path}`">
+          <img
+            :src="`${sections.s1.image}`"
+            class="card-image img-fluid"
+            :alt="`${sections.s1.name}-image`"
+          />
+          <div class="middle">
+            <h1>{{ sections.s1.name }}</h1>
+          </div>
+        </NuxtLink>
+      </div>
+
+      <div
+        :class="`image col-sm-${sections.s2.col} p-2 active position-relative menu`"
+      >
+        <NuxtLink :to="`${sections.s2.path}`">
+          <img
+            :src="`${sections.s2.image}`"
+            class="card-image img-fluid"
+            :alt="`${sections.s2.name}-image`"
+          />
+          <div class="middle">
+            <h1>{{ sections.s2.name }}</h1>
+          </div>
+        </NuxtLink>
+      </div>
+
+      <div
+        :class="`image col-sm-${sections.s3.col} p-2 active position-relative menu`"
+      >
+        <NuxtLink :to="`${sections.s3.path}`">
+          <img
+            :src="`${sections.s3.image}`"
+            class="card-image img-fluid"
+            :alt="`${sections.s3.name}-image`"
+          />
+          <div class="middle">
+            <h1>{{ sections.s3.name }}</h1>
+          </div>
+        </NuxtLink>
+      </div>
+
+      <div
+        :class="`image col-sm-${sections.s4.col} p-2 active position-relative menu`"
+      >
+        <NuxtLink :to="`${sections.s4.path}`">
+          <img
+            :src="`${sections.s4.image}`"
+            class="card-image img-fluid"
+            :alt="`${sections.s4.name}-image`"
+          />
+          <div class="middle">
+            <h1>{{ sections.s4.name }}</h1>
+          </div>
+        </NuxtLink>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
+  /* grazie a questo metodo vengono specificati i metadati della pagina */
+  head() {
+    return {
+      title: `LC & LU | Homepage`,
+      meta: [
+        {
+          hid: 'descriptionHomepage',
+          name: 'description',
+          content: `Homepage che mostra tutte le possibili vie d'acesso alle varie sezioni del sito`,
+        },
+        {
+          hid: 'keywordsHomepage',
+          name: 'keywords',
+          content: [
+            'Homepage',
+            'Statistiche',
+            'Risorse',
+            'Contatti',
+            'Progetto',
+            'Land Cover',
+            'Land Use',
+            'Uso del suolo',
+            'Copertura del suolo',
+          ],
+        },
+      ],
+    }
+  },
+  /* questi dati sono statici, dunque vengono inseriti all'interno del codice e non nel DB */
   data() {
-    // Home Page data never changes
     return {
       sections: {
         s1: {
@@ -126,33 +153,6 @@ export default {
           path: 'progetto',
         },
       },
-    }
-  },
-  head() {
-    return {
-      title: `LC & LU | Homepage`,
-      meta: [
-        {
-          hid: 'descriptionHomepage',
-          name: 'description',
-          content: `Homepage che mostra tutte le possibili vie d'acesso alle varie sezioni del sito`,
-        },
-        {
-          hid: 'keywordsHomepage',
-          name: 'keywords',
-          content: [
-            'Homepage',
-            'Statistiche',
-            'Risorse',
-            'Contatti',
-            'Progetto',
-            'Land Cover',
-            'Land Use',
-            'Uso del suolo',
-            'Copertura del suolo',
-          ],
-        },
-      ],
     }
   },
 }
@@ -188,8 +188,6 @@ export default {
     margin-top: 0;
   }
 }
-
-
 .menu {
   padding-bottom: 6px;
   padding-top: 6px;
@@ -213,7 +211,6 @@ export default {
   text-align: center;
   color: rgba(0, 0, 0, 0.866);
 }
-
 .img-fluid {
   width: 100%;
   height: 100%;
@@ -223,7 +220,6 @@ export default {
   -moz-transition: 0.5s ease;
   transition: 0.5s ease;
 }
-
 @media screen and (max-width: 992px) {
   .middle {
     color: rgba(0, 0, 0, 0.866);
@@ -234,7 +230,6 @@ export default {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-    
   }
   .img-fluid {
     opacity: 0.3;
@@ -242,7 +237,6 @@ export default {
   .center {
     text-align: center;
   }
-  
 }
 .button {
   padding: 1rem 4rem;
@@ -263,28 +257,4 @@ export default {
   object-position: center;
   border-radius: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>

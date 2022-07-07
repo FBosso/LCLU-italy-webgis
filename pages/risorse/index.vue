@@ -7,6 +7,7 @@
         :tags="topData.tags"
       />
     </div>
+    <!-- +++ INIZIO blocco di codice creazione pannello filtro +++ -->
     <div class="row mt-4">
       <div class="col-lg-6 mt-2">
         <v-app>
@@ -92,6 +93,7 @@
               </v-row>
               <v-row>
                 <button>
+                  <!-- al click del div "cerca" vengono chiamate 2 funzioni definite sotto nei methods -->
                   <div
                     @click="
                       modifyStoreParams()
@@ -147,6 +149,7 @@
         </div>
       </div>
     </div>
+    <!-- +++ FINE blocco di codice creazione pannello filtro +++ -->
   </div>
 </template>
 
@@ -159,24 +162,14 @@ export default {
     geojson = geojson.data
     /* ottenimento risorse */
     const { data } = await $axios.get('/api/risorse')
-    console.log(data)
-
-    /* ++++++++++++++++++++++++++++++++++++++++++ */
-
-    //const clusters = data.length/10
-
-    /* ++++++++++++++++++++++++++++++++++++++++++ */
-
     let listaRisorse = []
     for (let index = 0; index < data.length; index++) {
       listaRisorse.push(data[index].nome)
     }
     return {
       risorse: data,
-
       /* per metadati pagina */
       listaRisorse: listaRisorse,
-
       regioni: geojson,
     }
   },
@@ -219,12 +212,9 @@ export default {
           "In questa sezione i dati geospaziali raccolti nei geoportali regionali possono essere filtrati a seconda delle esigenze dell'utente",
         tags: ['DatiGeospaziali', 'Regioni', 'LandCover', 'LandUse'],
       },
-      defaul: true,
       shapes: [],
       display: [],
       searched: false,
-
-      contatore: 0,
 
       /* --------------------- */
 
@@ -283,12 +273,10 @@ export default {
         valuesRegione: [' '],
         valuesFormatoRisorsa: [' '],
         valuesLicenza: [' '],
-
         wfs: false,
         wms: false,
         arcgis: false,
         directDownload: false,
-
         metadataSite: false,
         metadataXml: false,
       },
@@ -297,12 +285,10 @@ export default {
         valuesRegione: [' '],
         valuesFormatoRisorsa: [' '],
         valuesLicenza: [' '],
-
         wfs: false,
         wms: false,
         arcgis: false,
         directDownload: false,
-
         metadataSite: false,
         metadataXml: false,
       },
@@ -312,38 +298,23 @@ export default {
   },
 
   methods: {
+    /* questa funzione propaga i parametri di ricerca nello stores 
+    per rendereli facilmente accessibili a tutte le pagine/components */
     modifyStoreParams: function () {
-      console.log('prima di funzione store')
-      /* let selInit = this.selectedInit
-      this.$store.commit('setSearchParams', selInit) */
       let sel = this.selected
       this.$store.commit('setSearchParams', sel)
-      console.log('dopo funzione store')
     },
+    /* questa funzione prende i parametri del filtro dallo store e 
+    cerca per quali regioni la ricerca ha prodotto dei riscontri */
     updateResources: async function () {
       let metadataSite = this.selected.metadataXml
-      console.log(this.selected.valuesRegione)
-      /* const data = await this.$axios.$get(
-        `/api/datiFiltrati/${selected.valuesRegione}/${selected.valuesFormatoRisorsa}/${selected.valuesLicenza}/${selected.wfs}/${selected.wms}/${selected.arcgis}/${selected.directDownload}/${metadataSite}/${selected.metadataXml}`
-      ) */
       this.shapes = await this.$axios.$get(
         `/api/shapes/${this.selected.valuesRegione}/${this.selected.valuesFormatoRisorsa}/${this.selected.valuesLicenza}/${this.selected.wfs}/${this.selected.wms}/${this.selected.arcgis}/${this.selected.directDownload}/${this.metadataSite}/${this.selected.metadataXml}`
       )
-
-      /* const caso = await this.$axios.$get(
-        `/api/caso/${selected.wfs}`
-      ) */
-
+      /* questa funzione costruisce un array sulla base del quale i 
+      layers nella slippy map verranno accesi o rimarranno spenti */
       this.obtainShapes()
-
-      this.defaul = true
-      this.defaul = false
-      //this.refresh = data
       this.searched = true
-
-      //this.$refs.italy.assignProperties(this.shapes, this.regioni);
-
-      /* this.addProperties() */
     },
     obtainShapes: async function () {
       let codici = []
@@ -354,19 +325,6 @@ export default {
       }
       this.display = codici
     },
-    /* addProperties: function (regioni){
-      regioni = 'ciao'
-      for (let i = 0; i < this.shapes.length; i++) {
-        const info = this.shapes[i];
-        for (let j = 0; j < regioni[0].length; j++) {
-          const reg = regioni[0][j];
-          if (j == (info.regId - 1)) {
-            reg.properties = info.CountedValue
-            console.log(reg)
-          }
-        }
-      }
-    } */
   },
 }
 </script>
@@ -388,7 +346,6 @@ export default {
   transition: 0.25s linear;
   color: black;
 }
-
 .side {
   border: solid 2px black;
   background: rgb(207, 207, 207);

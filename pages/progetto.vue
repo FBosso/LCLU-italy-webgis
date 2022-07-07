@@ -104,6 +104,7 @@
 <script>
 export default {
   name: 'ProgettoPage',
+  /* grazie a questo metodo vengono specificati i metadati della pagina */
   head() {
     return {
       title: 'LC LU Italia | Progetto',
@@ -131,6 +132,7 @@ export default {
       ],
     }
   },
+  /* questi dati sono statici, dunque vengono inseriti all'interno del codice e non nel DB */
   data() {
     return {
       topData: {
