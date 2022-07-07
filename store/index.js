@@ -15,7 +15,6 @@ export const state = () => ({
     page: 1,
     counter: 0
 })
-
 export const mutations = {
 
     /* funzione che modifica i parametri di ricerca delle risorse salvati dello score 
@@ -32,26 +31,12 @@ export const mutations = {
         state.selected.directDownload = selectedClient.directDownload
         
         state.selected.metadataSite = selectedClient.metadataSite
-        state.selected.metadataXml = selectedClient.metadataXml
-        console.log('fine dentro funzione')
+        state.selected.metadataXml = selectedClient.metadataXml     
     },
-
     /* funzione che modifica il valore della pagina corrente per implementare la 
     pagination delle risorse presenti nel dataset */
     changePage: (state, {n}) => {
         state.page = n
     },
-
-
-
-
-
-   /*  inc: (state) => {
-        state.counter = state.counter+1
-    },
-    setNumber: (state, {number}) => {
-        state.counter = number
-    }
- */
 }
 

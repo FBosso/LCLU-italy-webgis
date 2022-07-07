@@ -63,8 +63,13 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+
+    /*  ======================== START SWITCH DEV - PROD ==================================  */
+    
     baseURL: 'http://localhost:3000',
     //baseURL: 'https://lcluitalia.herokuapp.com'
+
+    /*  ======================== END SWITCH DEV - PROD ==================================  */
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

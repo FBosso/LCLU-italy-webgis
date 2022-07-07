@@ -9,6 +9,7 @@ app.use(express.json())
 
 const { Client } = require('@elastic/elasticsearch');
 
+/*  ======================== START SWITCH DEV - PROD ==================================  */
 
 /* DEV */
 const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
@@ -41,6 +42,9 @@ const client = new Client({
         password: process.env.ELASTIC_PASSWORD
     }
 }); */
+
+/*  ======================== END SWITCH DEV - PROD ==================================  */
+
 
 
 /* CORS NON è PIù NECESSARIO IN QUANTO SIA APPLICATION 
@@ -100,6 +104,7 @@ async function initializeDatabaseConnection() {
 async function runMainApi() {
     const models = await initializeDatabaseConnection()
     await initialize(models)
+
     app.get('/tiles/:resource/:z/:x/:y', function (req, res) {
 
         client.searchMvt({
@@ -108,15 +113,6 @@ async function runMainApi() {
             x: +req.params.x,
             index: req.params.resource,
             field: 'geometry',
-            //exact_bounds: true,
-            //extent: 100,
-            //grid_agg: "geotile",
-            //grid_agg: "geohex",
-            /* query:{
-                match:{
-                    "cod_reg":5
-                }
-            }, */
 
         }).then(function (resp) {
             console.log(req)
@@ -127,43 +123,6 @@ async function runMainApi() {
             res.send(err.message);
         });
     });
-
-
-    /* app.get('/fake', async (req, res) => {
-        let codici = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-        let regioni = []
-        for (let i = 0; i < codici.length; i++) {
-            const element = codici[i];
-            const regione = {
-                term: {
-                    "cod_reg": {
-                        "value": element
-                    }
-                }
-            }
-            regioni.push(regione)
-            
-        }
-        const result = await client.search({
-            index: 'italiah',
-            size: 20,
-            query: {
-                bool: {
-                    should: regioni
-                }
-            }
-        })
-        let lista = []
-        for (let i = 0; i < result.hits.hits.length; i++) {
-            const element = result.hits.hits[i]._source.geometry;
-            //element.properties = { regId: result.hits.hits[i]._source.cod_reg}
-            //element.properties = { name: result.hits.hits[i]._source.cod_reg}
-            const single = [element]
-            lista.push(single)
-        }
-        return res.json(lista)
-    }); */
-
 
     app.get('/ita', async (req, res) => {
         let codici = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
@@ -206,41 +165,6 @@ async function runMainApi() {
         return res.json(lista)
     });
 
-    /* app.get('/italia/:codici', async (req, res) => {
-        let codici = req.params.codici.split(',')
-        //let codici = [1,3,5]
-        let regioni = []
-        for (let i = 0; i < codici.length; i++) {
-            const element = codici[i];
-            const regione = {
-                term: {
-                    "cod_reg": {
-                        "value": element
-                    }
-                }
-            }
-            regioni.push(regione)
-            
-        }
-        const result = await client.search({
-            index: 'italias',
-            query: {
-                bool: {
-                    should: regioni
-                }
-            }
-        })
-        let lista = []
-        for (let i = 0; i < result.hits.hits.length; i++) {
-            const element = result.hits.hits[i]._source.geometry;
-            lista.push(element)
-        }
-
-        return res.json(lista)
-    }); */
-
-
-
     app.get("/risorse", async (req, res) => {
         const result = await models.Risorsa.findAll({
             attributes: {exclude:['createdAt','updatedAt']},
@@ -260,7 +184,6 @@ async function runMainApi() {
         })
         return res.json(result)
     })
-
 
     app.get('/datiFiltrati/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml/:page', async (req, res) => {
 
@@ -399,7 +322,6 @@ async function runMainApi() {
         return res.json(dati)
     })
 
-
     app.get('/generatePages/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml', async (req, res) => {
 
 
@@ -533,7 +455,6 @@ async function runMainApi() {
         })
         return res.json(dati)
     })
-
 
     app.get('/shapes/:valuesRegione/:valuesFormatoRisorsa/:valuesLicenza/:wfs/:wms/:arcgis/:directDownload/:metadataSite/:metadataXml', async (req, res) => {
 
