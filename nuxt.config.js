@@ -66,8 +66,8 @@ export default {
 
     /*  ======================== START SWITCH DEV - PROD ==================================  */
     
-    baseURL: 'http://localhost:3000',
-    //baseURL: 'https://lcluitalia.herokuapp.com'
+    //baseURL: 'http://localhost:3000',
+    baseURL: 'https://lcluitalia.herokuapp.com'
 
     /*  ======================== END SWITCH DEV - PROD ==================================  */
   },
