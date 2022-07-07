@@ -19,8 +19,8 @@ Il progetto è suddiviso in 5 parti fondamentali:
 
 ## Design
 L'output finale del processo di design, articolato nei seguenti punti fondamentali:
-1. Wireframes commentati
-2. Scenario di interazione tipo</br>
+1. [Wireframes commentati](https://drive.google.com/file/d/1YWP3ERA2YCfZSheFJY1fYoCczrVXkeMI/view?usp=sharing)
+2. [Scenario di interazione tipo](https://youtu.be/17nNcfXOC0o)</br>
 
 
 ## Backend Technologies
