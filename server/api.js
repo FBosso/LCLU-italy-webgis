@@ -18,10 +18,10 @@ const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-
 
 // POLI
 const client = new Client({
-    node: 'https://geoinformatics-project-07e882.es.us-central1.gcp.cloud.es.io',
+    node: 'https://geoinformatics-project.es.europe-west3.gcp.cloud.es.io',
     auth: {
         username: 'elastic',
-        password: 'UuraDFRJ6iedIEhgqNcaEdbb'
+        password: '1sOJr7LtuWYmstSW3DTktK3t'
     }
 });
 
@@ -36,7 +36,7 @@ const database = new Sequelize(process.env.DATABASE_URL, {
 
 
 const client = new Client({
-    node: 'https://geoinformatics-project-07e882.es.us-central1.gcp.cloud.es.io',
+    node: 'https://geoinformatics-project.es.europe-west3.gcp.cloud.es.io',
     auth: {
         username: process.env.ELASTIC_USER,
         password: process.env.ELASTIC_PASSWORD
@@ -140,7 +140,7 @@ async function runMainApi() {
             
         }
         const result = await client.search({
-            index: 'italiaoh',
+            index: 'italia',
             size: 20,
             query: {
                 bool: {

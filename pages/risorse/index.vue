@@ -132,7 +132,7 @@
           pagina web del geoportale di riferimento dove i metadati vengono
           mostrati a livello di pagina web.
         </div>
-        <div class="row button">
+        <div @click="restorePageOne()" class="row button">
           <NuxtLink
             v-if="searched && display.length > 0"
             class="mt-4 tool-visualizza"
@@ -325,6 +325,13 @@ export default {
       }
       this.display = codici
     },
+    /* con questa funzione si re-imposta ad 1 il valore della 
+    variabile page nello store prima di re-indirizzare l'utente 
+    alla page numero 1 */
+    restorePageOne: function (){
+      let n = 1
+      this.$store.commit('changePage', { n })
+    }
   },
 }
 </script>
