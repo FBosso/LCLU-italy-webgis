@@ -249,6 +249,7 @@ export default {
 }
 .button:hover {
   width: 24rem;
+  color: white;
 }
 .card-image {
   width: 100%;
