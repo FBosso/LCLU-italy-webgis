@@ -68,7 +68,7 @@ questa component implementa il footer che viene inserito all'interno del default
                 /></a>
               </div>
               <div class="social col">
-                <a href="https://www.isprambiente.gov.it"
+                <a href="https://shorturl.at/bdEKV"
                   ><img
                     class="icons"
                     src="https://i.ibb.co/yNtLbzf/ispra.webp"
