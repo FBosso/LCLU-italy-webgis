@@ -12,22 +12,21 @@ const { Client } = require('@elastic/elasticsearch');
 /*  ======================== START SWITCH DEV - PROD ==================================  */
 
 /* DEV */
-/* const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
+const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
 })
 
-// POLI
 const client = new Client({
-    node: 'https://geoinformatics-project.es.europe-west3.gcp.cloud.es.io',
+    node: 'https://geoinformatics-project-516cf4.es.europe-west3.gcp.cloud.es.io',
     auth: {
         username: 'elastic',
-        password: '1sOJr7LtuWYmstSW3DTktK3t'
+        password: 'xPCnGuixR1wme5iKShDJWfIR'
     }
-}); */
+});
 
 
 /* PROD */
-const pg = require('pg')
+/* const pg = require('pg')
 pg.defaults.ssl = true
 const database = new Sequelize(process.env.DATABASE_URL, {
    ssl: true,
@@ -36,12 +35,12 @@ const database = new Sequelize(process.env.DATABASE_URL, {
 
 
 const client = new Client({
-    node: 'https://geoinformatics-project.es.europe-west3.gcp.cloud.es.io',
+    node: 'https://geoinformatics-project-516cf4.es.europe-west3.gcp.cloud.es.io',
     auth: {
         username: process.env.ELASTIC_USER,
         password: process.env.ELASTIC_PASSWORD
     }
-});
+}); */
 
 /*  ======================== END SWITCH DEV - PROD ==================================  */
 
