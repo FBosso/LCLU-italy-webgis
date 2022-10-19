@@ -1,5 +1,7 @@
 # [Land Cover - Land Use | Italia](https://lcluitalia.herokuapp.com)
-<a href="https://mapflap.github.io"><img align="right" src="https://i.ibb.co/NspjQxV/logo.webp" alt="logo" width="220"></a>
+
+<a href="https://mapflap.github.io"><img align="right" src="static/favicon.ico" alt="logo" width="220"></a>
+
 
 *Implementazione di una applicazione web che fornisca una visione centralizzata dei dati di Uso e Copertura del suolo a livello Italiano - Progetto di Geoinformatica, Politecnico di Milano.*
 
