@@ -12,15 +12,15 @@ const { Client } = require('@elastic/elasticsearch');
 /*  ======================== START SWITCH DEV - PROD ==================================  */
 
 /* DEV */
-const database = new Sequelize('postgres://username:password@localhost:5432/nome_db', {
+const database = new Sequelize('postgres://postgres:postgres@localhost:5432/geo-nuxt', {
     logging: false //Set to true to log DB actions
 })
 
 const client = new Client({
-    node: Elasticsearch URL Endpoint,
+    node: 'https://geoinformatics-project-516cf4.es.europe-west3.gcp.cloud.es.io',
     auth: {
-        username: Elasticsearch Username,
-        password: Elasticsearch Password
+        username: 'elastic',
+        password: 'xPCnGuixR1wme5iKShDJWfIR'
     }
 });
 
