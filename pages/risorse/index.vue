@@ -158,8 +158,9 @@ export default {
   name: 'RisorsePage',
   async asyncData({ $axios }) {
     /* ottenimento regioni GEOJSON */
-    let geojson = await $axios.get(`/api/ita`)
-    geojson = geojson.data
+    /* let geojson = await $axios.get(`/api/ita`) */
+    /* geojson = geojson.data */
+    let geojson = 0
     /* ottenimento risorse */
     const { data } = await $axios.get('/api/risorse')
     let listaRisorse = []
